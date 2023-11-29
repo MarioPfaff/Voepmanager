@@ -31,10 +31,6 @@
 
     <h1 class="text-2xl font-bold">Roles</h1>
 
-    <x-primary-button class="my-6">
-        <a href="">Add New Role</a>
-    </x-primary-button>
-
     <table class="table-auto w-full text-left">
         <tr class="">
             <th class="w-20">ID</th>
@@ -49,7 +45,7 @@
                     <td class="w-20"><b><p>{{ $role->id }}</p></b></td>
                     <td class="w-72"><p>{{ $role->name }}</p></td>
                     <td class="w-5"><a href="roles/edit/{{ $role->id }}"><p>Edit</p></a></td>
-                    <td class="w-5"><p><a href="roles/destroy/ {{-- Route (route_to) for destroy must go here! --}}">Delete</p></a></td>
+                    <td class="w-5"><p><a href="roles/destroy/{{ $role->id }}">Delete</p></a></td>
                 </tr>
             @endforeach
         </tbody>
