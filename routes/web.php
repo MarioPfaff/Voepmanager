@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkprocessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,5 +79,10 @@ Route::group(['middleware' => ['permission:role.edit']], function () {
 Route::group(['middleware' => ['permission:role.delete']], function () {
     Route::get('roles/destroy/{id}', [RoleController::class, 'destroy']);
 });
+
+/* Viewing Workprocess  */
+// Route::group(['middleware' => ['permission:workprocess.view']], function () {
+    Route::get('/workprocesses', [WorkprocessController::class, 'index'])->name('workprocesses.index');
+// });
 
 require __DIR__.'/auth.php';

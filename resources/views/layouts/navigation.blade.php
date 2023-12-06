@@ -27,6 +27,12 @@
                         {{ __('View Roles') }}
                     </x-nav-link>
                     @endcan
+
+                    {{-- @can('workprocess.view') --}}
+                    <x-nav-link :href="route('workprocesses.index')" :active="request()->routeIs('workprocesses.index')">
+                        {{ __('View Workprocesses') }}
+                    </x-nav-link>
+                    {{-- @endcan --}}
                 </div>
             </div>
 
