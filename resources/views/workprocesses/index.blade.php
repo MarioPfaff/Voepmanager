@@ -49,8 +49,8 @@
                     <td class="w-15"><p>{{ $workprocess->core_task}}</p></td>
                     <td class="w-5"><p>{{ $workprocess->workprocess_number }}</p></td>
                     <td class="w-30"><b><p>{{ $workprocess->workprocess_title }}</p></b></td>
-                    {{-- <td class="w-5"><a href="{{ route('users.edit', ['user' => $user]) }}"><p>Edit</p></a></td>
-                    <td class="w-5"><p><a href="users/destroy/{{ $user->id }}">Delete</p></a></td> --}}
+                    <td class="w-5"><a href="{{ route('workprocesses.edit', ['workprocess' => $workprocess]) }}"><p>Edit</p></a></td>
+                    {{-- <td class="w-5"><p><a href="users/destroy/{{ $user->id }}">Delete</p></a></td> --}}
                 </tr>
             @endforeach
         </tbody>

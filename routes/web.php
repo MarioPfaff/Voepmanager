@@ -85,4 +85,10 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
     Route::get('/workprocesses', [WorkprocessController::class, 'index'])->name('workprocesses.index');
 // });
 
+/* Editing Workprocess  */
+// Route::group(['middleware' => ['permission:user.edit']], function () {
+    Route::get('/workprocesses/edit/{workprocess}', [WorkprocessController::class, 'edit'])->name('workprocesses.edit');
+    Route::put('/workprocesses/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
+// });
+
 require __DIR__.'/auth.php';
