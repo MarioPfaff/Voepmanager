@@ -1,0 +1,117 @@
+<?php
+ 
+namespace Database\Seeders;
+ 
+use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+ 
+class RoleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+ 
+        /* Import all roles. Add if there are more soon. */
+        DB::table('roles')->insert([
+            'name' => 'Beheerder',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('roles')->insert([
+            'name' => 'Docent',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('roles')->insert([
+            'name' => 'Slber',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('roles')->insert([
+            'name' => 'Student',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('roles')->insert([
+            'name' => 'Stagebegeleider',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('roles')->insert([
+            'name' => 'Auteur',
+            'guard_name' => 'web',
+        ]);
+ 
+        /* Import all permissions. Add if there are more soon. */
+        DB::table('permissions')->insert([
+            'id' => '1',
+            'name' => 'user.view',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '2',
+            'name' => 'user.create',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '3',
+            'name' => 'user.edit',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '4',
+            'name' => 'user.delete',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '5',
+            'name' => 'role.view',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '6',
+            'name' => 'role.edit',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '7',
+            'name' => 'role.delete',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '8',
+            'name' => 'role.create',
+            'guard_name' => 'web',
+        ]);
+ 
+        DB::table('permissions')->insert([
+            'id' => '9',
+            'name' => 'workprocess.view',
+            'guard_name' => 'web',
+        ]);
+ 
+ 
+        // Get the Beheerder role
+        $beheerderRole = Role::where('name', 'Beheerder')->first();
+ 
+        // Get all existing permission models
+        $existingPermissions = Permission::all();
+ 
+        // Sync all permissions to the Beheerder role
+        $beheerderRole->syncPermissions($existingPermissions);
+ 
+    }
+}
