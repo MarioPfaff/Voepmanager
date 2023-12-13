@@ -22,8 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 /* Assignment routes */
 Route::get('/opdrachten', [AssignmentController::class, 'index'])->name('assignments.index');
 
