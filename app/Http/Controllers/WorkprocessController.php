@@ -7,19 +7,20 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Models\Workprocess;
+use App\Models\Core_task;
 
 class WorkprocessController extends Controller
 {
     /* View all workprocesses */ 
     public function index() {
-        $workprocesses = Workprocess::all();
+        $workprocesses = Workprocess::with('coreTask')->get();
         return view('workprocesses.index', compact('workprocesses'));        
     }
 
     /* The edit button for all workprocesses */ 
     public function edit(Workprocess $workprocess) {
         $workprocess = Workprocess::all();
-        return view('workprocesses.edit', compact('workprocesses'));
+        return view('workprocesses.edit', compact('workprocess'));
     }
 
     public function update(Workprocess $workprocess, Request $request) {
@@ -38,6 +39,14 @@ class WorkprocessController extends Controller
         // $user->syncRoles($data['roles']);
 
         /* Redirect to the workprocess index */
-        return to_route('workporcesses.index')->with('success', 'workprocess updated successfully!');
+        return to_route('workprocesses.index')->with('success', 'workprocess updated successfully!');
+    }
+
+    public function destroy($id) {
+
+        /* Find the workprocess id using the passed id. */
+        $workprocess = Workprocess::find($id);
+        $workprocess->delete();
+        return to_route('workprocesses.index')->with('success', 'workprocess deleted successfully!');
     }
 }

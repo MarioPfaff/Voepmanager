@@ -91,4 +91,8 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
     Route::put('/workprocesses/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
 // });
 
+// Route::group(['middleware' => ['permission:role.delete']], function () {
+    Route::get('workprocesses/destroy/{id}', [WorkprocessController::class, 'destroy']);
+// });
+
 require __DIR__.'/auth.php';

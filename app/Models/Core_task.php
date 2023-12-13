@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Workprocess extends Model
+class Core_task extends Model
 {
     use HasFactory;
 
@@ -15,22 +15,19 @@ class Workprocess extends Model
      *
      * @var string
      */
-    protected $table = 'workprocesses';
+    protected $table = 'core_tasks';
     protected $primaryKey = 'id';
     use softDeletes;
 
     protected $fillable = [
-        'crebo',
-        'core_task_id',
-        'workprocess_number',
-        'workprocess_title',
+        'name',
     ];
 
     /**
-     * Get the core task that owns the workprocess.
+     * Get the wokrpocesses for the core task.
      */
-    public function coreTask()
+    public function workprocesses()
     {
-        return $this->belongsTo('App\Models\Core_task', 'core_task_id', 'id');
+        return $this->hasMany('App\Models\Workprocess');
     }
 }
