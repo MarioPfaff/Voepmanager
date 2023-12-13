@@ -4,6 +4,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AssignmentController;
+use App\Models\Assignment;
+use App\Models\UserAssignment;
+use App\Models\UserAssignmentComment;
+use App\Models\UserAssignmentFile;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +26,19 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+/* Assignment routes */
+Route::get('/opdrachten', [AssignmentController::class, 'index'])->name('assignments.index');
+
+Route::get('/opdrachten/create', [AssignmentController::class, 'create'])->name('assignments.create');
+Route::post('/opdrachten', [AssignmentController::class, 'store'])->name('assignments.store');
+Route::get('/opdrachten/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
+Route::get('/opdrachten/edit/{assignment}', [AssignmentController::class, 'edit'])->name('assignments.edit');
+Route::put('/opdrachten/update/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
+Route::get('/opdrachten/destroy/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
+
 
 /* Route for login */
 Route::get('/dashboard', function () {

@@ -36,6 +36,7 @@ class UserController extends Controller
         ]);
 
 
+
         /* Checker for the password */
         if (empty($data['password'])) {
             unset($data['password']);
