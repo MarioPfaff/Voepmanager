@@ -14,7 +14,7 @@ class WorkprocessController extends Controller
     /* View all workprocesses */ 
     public function index() {
         $workprocesses = Workprocess::with('coreTask')->get();
-        return view('workprocesses.index', compact('workprocesses'));        
+        return view('workprocesses.index', compact('workprocesses'));
     }
 
     /* The edit button for all workprocesses */ 
