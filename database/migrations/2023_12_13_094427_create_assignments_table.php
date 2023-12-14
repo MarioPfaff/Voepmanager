@@ -18,6 +18,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->dateTime('deadline')->nullable();
             $table->enum('status', ['Open', 'Gesloten'])->default('Open');
+
+            $table->foreignId('author_id')->nullable()->constrained('users');
+            $table->foreignId('workprocess_id')->nullable()->constrained('workprocesses');
                         
             /* Adds an archiving function to the database. */
             $table->softDeletes();

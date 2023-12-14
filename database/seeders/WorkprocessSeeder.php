@@ -18,6 +18,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '1',
             'workprocess_number' => 'B1-K1-W1',
             'workprocess_title' => 'Plant werkzaamheden en bewaakt de voortgang',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('workprocesses')->insert([
@@ -25,6 +27,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '1',
             'workprocess_number' => 'B1-K1-W2',
             'workprocess_title' => 'Ontwerpt software',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('workprocesses')->insert([
@@ -32,6 +36,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '1',
             'workprocess_number' => 'B1-K1-W3',
             'workprocess_title' => 'Realiseert (onderdelen van) software',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('workprocesses')->insert([
@@ -39,6 +45,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '1',
             'workprocess_number' => 'B1-K1-W4',
             'workprocess_title' => 'Test software',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('workprocesses')->insert([
@@ -46,6 +54,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '1',
             'workprocess_number' => 'B1-K1-W5',
             'workprocess_title' => 'Doet verbetervoorstellen voor de software',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('workprocesses')->insert([
@@ -53,6 +63,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '2',
             'workprocess_number' => 'B1-K2-W1',
             'workprocess_title' => 'Voert overleg',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('workprocesses')->insert([
@@ -60,6 +72,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '2',
             'workprocess_number' => 'B1-K2-W2',
             'workprocess_title' => 'Presenteert het opgeleverde werk',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('workprocesses')->insert([
@@ -67,6 +81,8 @@ class WorkprocessSeeder extends Seeder
             'core_task_id' => '2',
             'workprocess_number' => 'B1-K2-W3',
             'workprocess_title' => 'Reflecteert op het werk',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

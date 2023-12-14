@@ -31,12 +31,10 @@ class AssignmentController extends Controller
             'description' => 'nullable',
         ]);
     
-        // Create the assignment and capture the instance
         Assignment::create([
             'title' => $request->title,
             'deadline' => $request->deadline,
             'description' => $request->description,
-            'author_id' => $userid,
         ]);
 
         return redirect()->route('assignments.index')
@@ -46,7 +44,7 @@ class AssignmentController extends Controller
 
     public function show(Assignment $assignment)
     {
-        $assignments = Assignment::all(); // or fetch assignments as needed
+        $assignments = Assignment::all(); 
         return view('assignments.show', compact('assignment'));
     }
 

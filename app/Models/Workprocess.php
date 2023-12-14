@@ -33,4 +33,11 @@ class Workprocess extends Model
     {
         return $this->belongsTo('App\Models\Core_task', 'core_task_id', 'id');
     }
+
+    public function assignments()
+    {
+        return $this->hasMany('App\Models\Assignment', 'workprocess_id', 'id');
+    }
+
+
 }

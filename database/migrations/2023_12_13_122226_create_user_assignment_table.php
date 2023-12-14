@@ -22,9 +22,6 @@ return new class extends Migration
             /* Links to the right tables */
             $table->foreignIdFor(Assignment::class);
             $table->foreignIdFor(User::class);
-
-            /* The author of the assignment */
-            $table->foreignId('author_id')->constrained('users'); 
             
             /* Status on the specific assignment */
             $table->enum('phase', ['Niet ingeleverd', 'Ingeleverd, niet nagekeken', 'Nagekeken'])->default('Niet ingeleverd');
@@ -47,7 +44,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignIdFor(UserAssignment::class);
-            $table->string('file_path');
+            $table->text('file_path');
         });
 
         /* Files that are specifically on the assignment itself, global files. */
@@ -56,7 +53,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignIdFor(Assignment::class);
-            $table->string('file_path');
+            $table->text('file_path');
         });
     }
 

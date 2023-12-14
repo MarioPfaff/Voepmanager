@@ -30,14 +30,14 @@
     </x-notification-success>
     @endif
 
-    <h1 class="text-2xl font-bold">Workprocesses</h1>
+    <h1 class="text-2xl font-bold">Werkprocessen</h1>
 
     <table class="table-auto w-full text-left">
         <tr>
-            <th class="w-10">Crebo number</th>
-            <th class="w-24">Core task</th>
-            <th class="w-5">Workprocess</th>
-            <th class="w-24">Title</th>
+            <th class="w-10">Crebo</th>
+            <th class="w-24">Kerntaak</th>
+            <th class="w-5">Werkprocessen</th>
+            <th class="w-24">Titel</th>
             <th class="w-5"></th>
             <th class="w-5"></th>
         </tr>
@@ -49,8 +49,8 @@
                     <td class="w-15"><p>{{ $workprocess->coreTask['name']}}</p></td>
                     <td class="w-5"><p>{{ $workprocess->workprocess_number }}</p></td>
                     <td class="w-30"><b><p>{{ $workprocess->workprocess_title }}</p></b></td>
-                    <td class="w-5"><a href="{{ route('workprocesses.edit', ['workprocess' => $workprocess]) }}"><p>Edit</p></a></td>
-                    <td class="w-5"><p><a href="workprocesses/destroy/{{ $workprocess->id }}">Delete</p></a></td>
+                    <td class="w-5"><a href="{{ route('workprocesses.edit', ['workprocess' => $workprocess]) }}"><p>Aanpassen</p></a></td>
+                    <td class="w-5"><p><a href="workprocesses/destroy/{{ $workprocess->id }}">Verwijderen</p></a></td>
                 </tr>
             @endforeach
         </tbody>

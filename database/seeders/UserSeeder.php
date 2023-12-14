@@ -15,55 +15,95 @@ class UserSeeder extends Seeder
     public function run(): void
     {
  
-    $beheerder = User::create([
-        'name' => 'Admin',
-        'email' => 'beheerder@rocrivor.com',
-        'password' => bcrypt('12345678')
-    ]);
- 
-    $beheerder->assignRole('Beheerder');
- 
-    $docent = User::create([
-        'name' => 'Docent',
-        'email' => 'docent@rocrivor.nl',
+    $beheerderMario = User::create([
+        'name' => 'Mario Pfaff',
+        'email' => 'm.pfaff@roc.beheerder.nl',
         'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
     ]);
  
-    $docent->assignRole('Docent');
- 
-    $slber = User::create([
-        'name' => 'Slber',
-        'email' => 'slber@rocrivor.nl',
+    $beheerderMario->assignRole('Beheerder');
+
+    $beheerderTomas = User::create([
+        'name' => 'Tomas van Westen',
+        'email' => 't.vanwesten@roc.beheerder.nl',
         'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
     ]);
  
-    $slber->assignRole('Slber');
+    $beheerderTomas->assignRole('Beheerder');
  
-    $student = User::create([
-        'name' => 'Student',
-        'email' => 'student@rocrivor.nl',
+    $docentHerbert = User::create([
+        'name' => 'Herbert Rietman',
+        'email' => 'h.rietman@roc.docent.nl',
         'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
     ]);
  
-    $student->assignRole('Student');
- 
-    $stagebegeleider = User::create([
-        'name' => 'Stagebegeleider',
-        'email' => 'stagebegeleider@rocrivor.nl',
+    $docentHerbert->assignRole('Docent');
+
+    $docentHanneke = User::create([
+        'name' => 'Hanneke Kool',
+        'email' => 'h.kool@roc.docent.nl',
         'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
     ]);
  
-    $stagebegeleider->assignRole('Stagebegeleider');
+    $docentHanneke->assignRole('Docent');
  
-    $auteur = User::create([
-        'name' => 'Auteur',
-        'email' => 'auteur@rocrivor.nl',
+    $slberHanneke = User::create([
+        'name' => 'Hanneke Kool',
+        'email' => 'h.kool@roc.slber.nl',
         'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
     ]);
  
-    $auteur->assignRole('Auteur');
+    $slberHanneke->assignRole('Slber');
  
+    $studentMario = User::create([
+        'name' => 'Mario Pfaff',
+        'email' => 'm.pfaff@roc.student.nl',
+        'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
  
+    $studentMario->assignRole('Student');
+
+    $studentTomas = User::create([
+        'name' => 'Mario Pfaff',
+        'email' => 't.vanwesten@roc.student.nl',
+        'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+ 
+    $studentTomas->assignRole('Student');
+ 
+    $stagebegeleiderErik = User::create([
+        'name' => 'Erik Drent',
+        'email' => 'e.drent@roc.stagebegeleider.nl',
+        'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+ 
+    $stagebegeleiderErik->assignRole('Stagebegeleider');
+ 
+    $auteurHanneke = User::create([
+        'name' => 'Hanneke Kool',
+        'email' => 'h.kool@roc.auteur.nl',
+        'password' => bcrypt('12345678'),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+ 
+    $auteurHanneke->assignRole('Auteur');
  
     }
 }

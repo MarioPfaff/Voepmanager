@@ -30,6 +30,9 @@ class AssignmentSeeder extends Seeder
             Gebruik het volgende format: datum – wat heb ik gedaan – wat heb ik geleerd – tot waar ben ik gekomen
             ',
             'status' => 'Open',
+            'created_at' => now(),
+            'updated_at' => now(),
+            'author_id' => 1,
         ]);
 
         DB::table('assignments')->insert([
@@ -42,6 +45,9 @@ class AssignmentSeeder extends Seeder
             Lever hier je certificaat in.
             ',
             'status' => 'Open',
+            'created_at' => now(),
+            'updated_at' => now(),
+            'author_id' => 2,
         ]);
 
         DB::table('assignments')->insert([
@@ -58,6 +64,9 @@ class AssignmentSeeder extends Seeder
             Inleveren: Ontwerpdocument (Hoofdstuk 3 van de projectwijzer)
             ',
             'status' => 'Gesloten',
+            'created_at' => now(),
+            'updated_at' => now(),
+            'author_id' => 1,
         ]);
     }
 }

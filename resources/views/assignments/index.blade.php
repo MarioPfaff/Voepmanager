@@ -49,7 +49,7 @@
                     <td class="w-30"><b><p>{{ $assignment->title }}</p></b></td>
                     <td class="w-5"><p>
                     @if ($assignment->author)
-                        <p>{{ $assignment->created_at }} | {{ $assignment->author }}</p>
+                        <p>{{ $assignment->created_at }} | {{ $assignment->author->name }}</p>
                     @else
                         <p>{{ $assignment->created_at }}</p>
                     @endif                    
