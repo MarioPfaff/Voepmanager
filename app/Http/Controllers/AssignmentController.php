@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Assignment;
+use App\Models\Workprocess;
+use Illuminate\Support\Facades\Auth;
+
 
 class AssignmentController extends Controller
 {
@@ -17,26 +20,28 @@ class AssignmentController extends Controller
     
     public function create()
     {
-        return view('assignments.create');
+        $workprocesses = Workprocess::all();
+        return view('assignments.create', compact('workprocesses'));
     }
 
     public function store(Request $request)
     {
-    
-        $userid = auth()->user()->id;
-
         $request->validate([
             'title' => 'required',
             'deadline' => 'nullable',
             'description' => 'nullable',
+            'workprocess_id' => 'required',
+            'author_id' => 'required',
         ]);
     
         Assignment::create([
             'title' => $request->title,
             'deadline' => $request->deadline,
             'description' => $request->description,
+            'author_id' => $request->author_id ?? Auth::user()->id,
+            'workprocess_id' => $request->workprocess_id,
         ]);
-
+    
         return redirect()->route('assignments.index')
             ->with('success', 'Assignment created successfully.');
     }

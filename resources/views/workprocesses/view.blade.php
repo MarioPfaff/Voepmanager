@@ -1,22 +1,4 @@
 <x-app-layout>
-    <style>
-        tbody tr:nth-of-type(even) {
-            background-color: #f1f1f1;
-        }
-
-        table tr td, table tr th {
-            padding: 5px 12px;
-        }
-        
-        table tr td:nth-of-type(4n+1) {
-            border-radius: 5px 0px 0px 5px;
-        }
-
-        table tr td:nth-of-type(1n+5) {
-            border-radius: 0px 5px 5px 0px;
-        }
-    </style>
-
     @if (session('error'))
         <x-notification-danger>
             {{ session('error') }}
@@ -29,11 +11,8 @@
         </x-notification-success>
     @endif
 
-    <h1 class="text-2xl font-bold">Opdrachten</h1>
+    <h1 class="text-2xl font-bold">{{ $workprocesses->workprocess_number }} - {{ $workprocesses->workprocess_title }}</h1>
 
-    <x-primary-button class="my-6">
-        <a href="{{ route('assignments.create') }}">Nieuwe opdracht</a>
-    </x-primary-button>
 
     <table class="table-auto w-full text-left">
         <tr>
@@ -48,13 +27,12 @@
                 <tr class="">
                     <td class="w-30"><b><p>{{ $assignment->title }}</p></b></td>
                     <td class="w-5"><p>
-                    @if ($assignment->authors)
-                        <p>{{ $assignment->created_at }} | {{ $assignment->authors->name }}</p>
+                    @if ($assignment->author)
+                        <p>{{ $assignment->created_at }} | {{ $assignment->author->name }}</p>
                     @else
                         <p>{{ $assignment->created_at }}</p>
                     @endif                    
                     </p></td>
-
                     <td class="w-5"><p>{{ $assignment->status }}</p></td>
                     <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p>Bekijken</p></a></td>
                 </tr>

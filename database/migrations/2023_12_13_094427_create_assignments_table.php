@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title', 255)->nullable(false);
+            $table->text('title')->nullable(false);
             $table->text('description')->nullable();
             $table->dateTime('deadline')->nullable();
             $table->enum('status', ['Open', 'Gesloten'])->default('Open');

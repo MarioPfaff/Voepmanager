@@ -76,7 +76,7 @@ class UserSeeder extends Seeder
     $studentMario->assignRole('Student');
 
     $studentTomas = User::create([
-        'name' => 'Mario Pfaff',
+        'name' => 'Tomas van Westen',
         'email' => 't.vanwesten@roc.student.nl',
         'password' => bcrypt('12345678'),
         'created_at' => now(),

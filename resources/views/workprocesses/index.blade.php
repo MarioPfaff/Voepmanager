@@ -49,6 +49,7 @@
                     <td class="w-15"><p>{{ $workprocess->coreTask['name']}}</p></td>
                     <td class="w-5"><p>{{ $workprocess->workprocess_number }}</p></td>
                     <td class="w-30"><b><p>{{ $workprocess->workprocess_title }}</p></b></td>
+                    <td class="w-5"><a href="{{ route('workprocesses.view', ['workprocess' => $workprocess]) }}"><p>Bekijken</p></a></td>
                     <td class="w-5"><a href="{{ route('workprocesses.edit', ['workprocess' => $workprocess]) }}"><p>Aanpassen</p></a></td>
                     <td class="w-5"><p><a href="workprocesses/destroy/{{ $workprocess->id }}">Verwijderen</p></a></td>
                 </tr>

@@ -105,6 +105,7 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
 // Route::group(['middleware' => ['permission:user.edit']], function () {
     Route::get('/workprocesses/edit/{workprocess}', [WorkprocessController::class, 'edit'])->name('workprocesses.edit');
     Route::put('/workprocesses/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
+    Route::get('/workprocesses/view/{workprocess}', [WorkprocessController::class, 'view'])->name('workprocesses.view');
 // });
 
 // Route::group(['middleware' => ['permission:role.delete']], function () {

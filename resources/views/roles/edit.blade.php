@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-back-button/>
-    <h1 class="text-2xl font-bold mb-8">Editing Role: {{$role->name}}</h1>
+    <h1 class="text-2xl font-bold mb-8">Aanpassen: {{$role->name}}</h1>
 
     @if($errors->any())
         <x-notification-danger>
@@ -16,12 +16,12 @@
         @method('PUT')
 
         <div>
-            <x-input-label>Role Name</x-input-label>
+            <x-input-label>Naam</x-input-label>
             <x-text-input type="text" name="name" value="{{$role->name}}"></x-text-input>
         </div>
 
         <div>
-            <x-input-label>Role Permissions</x-input-label>
+            <x-input-label>Toestemmingen</x-input-label>
                 @foreach($permissions as $permission)
                     <input type="checkbox" name="{{ $permission->id }}" value="{{ $permission->id }}"
                     @if ($role->permissions->pluck("name")->contains($permission->name)) 
@@ -33,7 +33,7 @@
         </div>
         <br/>
         <div>
-            <x-primary-button type="submit"> Save Changes </x-primary-button>
+            <x-primary-button type="submit"> Opslaan </x-primary-button>
         </div>
     </form>
 </x-app-layout>

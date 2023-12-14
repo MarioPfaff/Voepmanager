@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Models\Workprocess;
 use App\Models\Core_task;
+use App\Models\Assignment;
 
 class WorkprocessController extends Controller
 {
@@ -43,10 +44,18 @@ class WorkprocessController extends Controller
     }
 
     public function destroy($id) {
-
         /* Find the workprocess id using the passed id. */
         $workprocess = Workprocess::find($id);
         $workprocess->delete();
         return to_route('workprocesses.index')->with('success', 'workprocess deleted successfully!');
+    }
+
+    public function view($id) {
+        $workprocesses = Workprocess::class::find($id);
+
+        // Load only the assignments related to the current work process
+        $assignments = Assignment::where('workprocess_id', $workprocesses->id)->get();
+    
+        return view('workprocesses.view', compact('workprocesses', 'assignments'));        
     }
 }

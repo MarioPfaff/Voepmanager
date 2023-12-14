@@ -16,6 +16,10 @@ class Assignment extends Model
         'title',
         'description',
         'deadline',
+        'author_id',
+        'workprocess_id',
+        'created_at',
+        'updated_at',
         ];
 
     public function users()
@@ -23,13 +27,13 @@ class Assignment extends Model
         return $this->belongsToMany(User::class, 'user_assignment')->using(UserAssignment::class)->withPivot('phase', 'progress');
     }
 
-    public function author()
+    public function authors()
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
     public function workprocesses()
     {
-        return $this->belongsTo(Workprocess::class, 'workprocess_id');
+        return $this->belongsTo(Workprocess::class);
     }
 }

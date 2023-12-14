@@ -29,12 +29,12 @@
         </x-notification-success>
     @endif
 
-    <h1 class="text-2xl font-bold">Roles</h1>
+    <h1 class="text-2xl font-bold">Rollen</h1>
 
     <table class="table-auto w-full text-left">
         <tr class="">
-            <th class="w-20">ID</th>
-            <th class="w-72">Role</th>
+            <th class="w-20">Identificatie</th>
+            <th class="w-72">Rol</th>
             <th class="w-5"></th>
             <th class="w-5"></th>
         </tr>
@@ -44,8 +44,7 @@
                 <tr class="">
                     <td class="w-20"><b><p>{{ $role->id }}</p></b></td>
                     <td class="w-72"><p>{{ $role->name }}</p></td>
-                    <td class="w-5"><a href="roles/edit/{{ $role->id }}"><p>Edit</p></a></td>
-                    <td class="w-5"><p><a href="roles/destroy/{{ $role->id }}">Delete</p></a></td>
+                    <td class="w-5"><a href="roles/edit/{{ $role->id }}"><p>Aanpassen</p></a></td>
                 </tr>
             @endforeach
         </tbody>

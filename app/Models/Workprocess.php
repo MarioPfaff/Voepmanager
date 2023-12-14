@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Workprocess extends Model
 {
     use HasFactory;
+    use softDeletes;
 
     /**
      * The table associated with the model.
@@ -17,7 +18,6 @@ class Workprocess extends Model
      */
     protected $table = 'workprocesses';
     protected $primaryKey = 'id';
-    use softDeletes;
 
     protected $fillable = [
         'crebo',
@@ -31,12 +31,12 @@ class Workprocess extends Model
      */
     public function coreTask()
     {
-        return $this->belongsTo('App\Models\Core_task', 'core_task_id', 'id');
+        return $this->belongsTo(Core_task::class, 'core_task_id', 'id');
     }
 
     public function assignments()
     {
-        return $this->hasMany('App\Models\Assignment', 'workprocess_id', 'id');
+        return $this->hasMany(Assignment::class);
     }
 
 

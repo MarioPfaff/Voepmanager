@@ -4,11 +4,9 @@
 
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
-  - [Clone the Repository](#clone-the-repository)
   - [Install Dependencies](#install-dependencies)
-  - [Database Setup](#database-setup)
-- [Configuration](#configuration)
 - [Usage](#usage)
+  - [Database Setup](#database-setup)
   - [Run Migrations](#run-migrations)
   - [Database Setup](#database-setup)
 - [Run Seeders](#run-seeders)
