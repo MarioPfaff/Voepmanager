@@ -1,43 +1,44 @@
-<x-app-layout>
+<x-app-layout>    
     
-    <style>
-        tbody tr:nth-of-type(even) {
-            background-color: #f1f1f1;
-        }
-
-        table tr td, table tr th {
-            padding: 5px 12px;
-        }
-        
-        table tr td:nth-of-type(4n+1) {
-            border-radius: 5px 0px 0px 5px;
-        }
-
-        table tr td:nth-of-type(1n+5) {
-            border-radius: 0px 5px 5px 0px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     @if (session('error'))
-    <x-notification-danger>
-        {{ session('error') }}
-    </x-notification-danger>
+        <div class="alert-success">
+            <x-notification-danger>
+                {{ session('error') }}
+            </x-notification-danger>
+        </div>
     @endif
 
     @if (session('success'))
-    <x-notification-success>
-        {{ session('success') }}
-    </x-notification-success>
+        <div class="alert-success">
+            <x-notification-success>
+                {{ session('success') }}
+            </x-notification-success>
+        </div>
     @endif
+    
+    <h1 class="text-2xl font-bold">Werkprocessen</h1>
 
-    <h1 class="text-2xl font-bold">Workprocesses</h1>
+    <x-primary-button class="my-6">
+        <a href="{{ route('workprocesses.create') }}">Nieuwe werkprocess creëren</a>
+    </x-primary-button>
 
-    <table class="table-auto w-full text-left">
+    <select id="filterDropdown" name="core_task_id">
+        <option value=""> Alle </option>
+        @foreach($core_tasks as $core_task)
+            <option value="{{$core_task->name}}">
+                {{$core_task->name}}
+            </option>
+        @endforeach
+    </select>
+
+    <table id="workprocessTable" class="table-auto w-full text-left">
         <tr>
-            <th class="w-10">Crebo number</th>
-            <th class="w-24">Core task</th>
-            <th class="w-5">Workprocess</th>
-            <th class="w-24">Title</th>
+            <th class="w-10">Crebo nummer</th>
+            <th class="w-24">Kerntaak</th>
+            <th class="w-5">Werkprocess</th>
+            <th class="w-24">Titel</th>
             <th class="w-5"></th>
             <th class="w-5"></th>
         </tr>
@@ -49,11 +50,13 @@
                     <td class="w-15"><p>{{ $workprocess->coreTask['name']}}</p></td>
                     <td class="w-5"><p>{{ $workprocess->workprocess_number }}</p></td>
                     <td class="w-30"><b><p>{{ $workprocess->workprocess_title }}</p></b></td>
-                    <td class="w-5"><a href="{{ route('workprocesses.edit', ['workprocess' => $workprocess]) }}"><p>Edit</p></a></td>
-                    <td class="w-5"><p><a href="workprocesses/destroy/{{ $workprocess->id }}">Delete</p></a></td>
+                    <td class="w-5"><a href="{{ route('workprocesses.edit', ['workprocess' => $workprocess]) }}"><p>Bijwerken</p></a></td>
+                    <td class="w-5"><p><a href="workprocesses/destroy/{{ $workprocess->id }}">Verwijderen</p></a></td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    <script type="text/javascript" defer src="{{ asset('js/script.js') }}"></script>
 
 </x-app-layout>

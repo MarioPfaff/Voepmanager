@@ -14,39 +14,71 @@ class WorkprocessController extends Controller
     /* View all workprocesses */ 
     public function index() {
         $workprocesses = Workprocess::with('coreTask')->get();
-        return view('workprocesses.index', compact('workprocesses'));
+        $core_tasks = Core_task::all();
+        return view('workprocesses.index', compact('workprocesses', 'core_tasks'));
     }
 
-    /* The edit button for all workprocesses */ 
-    public function edit(Workprocess $workprocess) {
-        $workprocess = Workprocess::all();
-        return view('workprocesses.edit', compact('workprocess'));
+    /* edit functions */
+    public function edit($id) {
+        $workprocess = Workprocess::findOrFail($id);
+        $core_tasks = Core_task::all();
+        return view('workprocesses.edit', compact('workprocess', 'core_tasks'));
     }
 
     public function update(Workprocess $workprocess, Request $request) {
         /* Validate the form */
         $data = $request->validate([
-            'workprocess_title' => 'required|string|unique:max:50',
-
-            'workprocess_number' => 'required|integer|unique:max:10',
-
-            'core_task' => 'required|string|unique:max:50',
-            'crebo' => 'required|integer|unique:max:10',
+            'workprocess_title' => 'required|string|max:255',
+            'workprocess_number' => 'required|string|max:10',
+            'core_task_id' => 'required',
+            'crebo' => 'required|string|max:11',
         ]);
 
         /* Update the workprocess using data from the data variable */
         $workprocess->update($data);
-        // $user->syncRoles($data['roles']);
 
         /* Redirect to the workprocess index */
-        return to_route('workprocesses.index')->with('success', 'workprocess updated successfully!');
+        return redirect()->route('workprocesses.index')->with('success', 'Werkprocess succesvol bewerkt!')->with('success_timeout', true);
     }
+    /* end edit functions */
+
+    /* create functions */
+    public function create() {
+        $core_tasks = Core_task::all();
+        return view('workprocesses/create', compact('core_tasks'));
+    }
+
+    public function store(Request $request) {
+        /* Validate the form */
+        $data = $request->validate([
+            'workprocess_title' => 'required|string|max:255',
+            'workprocess_number' => 'required|string|max:10',
+            'core_task_id' => 'required',
+            'crebo' => 'required|string|max:11',
+        ]);
+
+        /* Create the workprocess */
+        $workprocess = Workprocess::create([
+            'workprocess_title' => $data['workprocess_title'],
+            'workprocess_number' => $data['workprocess_number'],
+            'core_task_id' => $data['core_task_id'],
+            'crebo' => $data['crebo'],
+        ]);
+
+        /* Save the created object in variable workprocess */
+        $workprocess->save();
+
+        /* Redirect to the workprocess overview page */
+        return to_route('workprocesses.index')->with('success', 'werkprocess succesvol aangemaakt!');
+    }
+    /* end create functions */
 
     public function destroy($id) {
 
         /* Find the workprocess id using the passed id. */
         $workprocess = Workprocess::find($id);
         $workprocess->delete();
-        return to_route('workprocesses.index')->with('success', 'workprocess deleted successfully!');
+        /* Redirect to the workprocess overview page */
+        return to_route('workprocesses.index')->with('success', 'werkprocess succesvol verwijderd!');
     }
 }

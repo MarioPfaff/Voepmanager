@@ -1,32 +1,21 @@
 <x-app-layout>
-                    <style>
-                        tbody tr:nth-of-type(even) {
-                            background-color: #f1f1f1;
-                        }
-
-                        table tr td, table tr th {
-                            padding: 5px 12px;
-                        }
-                        
-                        table tr td:nth-of-type(4n+1) {
-                            border-radius: 5px 0px 0px 5px;
-                        }
-
-                        table tr td:nth-of-type(1n+5) {
-                            border-radius: 0px 5px 5px 0px;
-                        }
-                    </style>
+    
+                    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
                     @if (session('error'))
-                        <x-notification-danger>
-                            {{ session('error') }}
-                        </x-notification-danger>
+                        <div class="alert-success">
+                            <x-notification-danger>
+                                {{ session('error') }}
+                            </x-notification-danger>
+                        </div>
                     @endif
 
                     @if (session('success'))
-                        <x-notification-success>
-                            {{ session('success') }}
-                        </x-notification-success>
+                        <div class="alert-success">
+                            <x-notification-success>
+                                {{ session('success') }}
+                            </x-notification-success>
+                        </div>
                     @endif
 
                     <h1 class="text-2xl font-bold">Users</h1>
@@ -60,4 +49,6 @@
                     </table>
                     <br/>
                     {{ $users -> links() }}
+
+                    <script type="text/javascript" defer src="{{ asset('js/script.js') }}"></script>
 </x-app-layout>

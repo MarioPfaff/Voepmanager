@@ -18,19 +18,19 @@
 
                     @can('user.view')
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        {{ __('View Users') }}
+                        {{ __('Gebruikers') }}
                     </x-nav-link>
                     @endcan
 
                     @can('role.view')
                     <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                        {{ __('View Roles') }}
+                        {{ __('Rollen') }}
                     </x-nav-link>
                     @endcan
 
                     {{-- @can('workprocess.view') --}}
                     <x-nav-link :href="route('workprocesses.index')" :active="request()->routeIs('workprocesses.index')">
-                        {{ __('View Workprocesses') }}
+                        {{ __('Werkprocessen') }}
                     </x-nav-link>
                     {{-- @endcan --}}
                 </div>

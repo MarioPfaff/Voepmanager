@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('workprocesses', function (Blueprint $table) {
             $table->id();
-            $table->integer('crebo');
+            $table->bigInteger('crebo');
             $table->foreignidFor(Core_task::class);
             $table->string('workprocess_number', 10);
             $table->string('workprocess_title');

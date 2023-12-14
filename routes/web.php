@@ -97,12 +97,19 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
     Route::get('/workprocesses', [WorkprocessController::class, 'index'])->name('workprocesses.index');
 // });
 
+/* Creating Workprocess  */
+// Route::group(['middleware' => ['permission:role.create']], function () {
+    Route::get('/workprocesses/create', [WorkprocessController::class, 'create'])->name('workprocesses.create');
+    Route::post('/workprocesses', [WorkprocessController::class, 'store'])->name('workprocesses.store');
+// });
+
 /* Editing Workprocess  */
 // Route::group(['middleware' => ['permission:user.edit']], function () {
     Route::get('/workprocesses/edit/{workprocess}', [WorkprocessController::class, 'edit'])->name('workprocesses.edit');
     Route::put('/workprocesses/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
 // });
 
+/* Deleting Workprocess */
 // Route::group(['middleware' => ['permission:role.delete']], function () {
     Route::get('workprocesses/destroy/{id}', [WorkprocessController::class, 'destroy']);
 // });
