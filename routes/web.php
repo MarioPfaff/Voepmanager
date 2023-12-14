@@ -28,8 +28,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 /* Assignment routes */
 Route::get('/opdrachten', [AssignmentController::class, 'index'])->name('assignments.index');
 
@@ -98,5 +96,20 @@ Route::group(['middleware' => ['permission:role.edit']], function () {
 Route::group(['middleware' => ['permission:role.delete']], function () {
     Route::get('roles/destroy/{id}', [RoleController::class, 'destroy']);
 });
+
+/* Viewing Workprocess  */
+// Route::group(['middleware' => ['permission:workprocess.view']], function () {
+    Route::get('/workprocesses', [WorkprocessController::class, 'index'])->name('workprocesses.index');
+// });
+
+/* Editing Workprocess  */
+// Route::group(['middleware' => ['permission:user.edit']], function () {
+    Route::get('/workprocesses/edit/{workprocess}', [WorkprocessController::class, 'edit'])->name('workprocesses.edit');
+    Route::put('/workprocesses/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
+// });
+
+// Route::group(['middleware' => ['permission:role.delete']], function () {
+    Route::get('workprocesses/destroy/{id}', [WorkprocessController::class, 'destroy']);
+// });
 
 require __DIR__.'/auth.php';

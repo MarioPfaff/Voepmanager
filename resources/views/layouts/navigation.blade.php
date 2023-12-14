@@ -27,6 +27,12 @@
                         {{ __('View Roles') }}
                     </x-nav-link>
                     @endcan
+
+                    {{-- @can('workprocess.view') --}}
+                    <x-nav-link :href="route('workprocesses.index')" :active="request()->routeIs('workprocesses.index')">
+                        {{ __('View Workprocesses') }}
+                    </x-nav-link>
+                    {{-- @endcan --}}
                 </div>
             </div>
 
@@ -89,6 +95,10 @@
 
             <x-responsive-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
                 {{ __('View Roles') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('workprocesses.index')" :active="request()->routeIs('workprocesses.index')">
+                {{ __('View workprocesses') }}
             </x-responsive-nav-link>
         </div>
 
