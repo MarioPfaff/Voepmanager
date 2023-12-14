@@ -23,6 +23,8 @@ class AssignmentController extends Controller
     public function store(Request $request)
     {
     
+        $userid = auth()->user()->id;
+
         $request->validate([
             'title' => 'required',
             'deadline' => 'nullable',
@@ -34,8 +36,9 @@ class AssignmentController extends Controller
             'title' => $request->title,
             'deadline' => $request->deadline,
             'description' => $request->description,
+            'author_id' => $userid,
         ]);
-    
+
         return redirect()->route('assignments.index')
             ->with('success', 'Assignment created successfully.');
     }
