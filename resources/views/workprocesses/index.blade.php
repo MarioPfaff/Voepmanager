@@ -33,9 +33,9 @@
 
     <table id="workprocessTable" class="table-auto w-full text-left">
         <tr>
-            <th class="w-10">Crebo nummer</th>
+            <th class="w-10">Crebo</th>
             <th class="w-24">Kerntaak</th>
-            <th class="w-5">Werkprocess</th>
+            <th class="w-5">Werkprocessen</th>
             <th class="w-24">Titel</th>
             <th class="w-5"></th>
             <th class="w-5"></th>

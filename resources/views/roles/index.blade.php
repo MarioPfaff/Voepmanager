@@ -16,12 +16,12 @@
         </div>
     @endif
 
-    <h1 class="text-2xl font-bold">Roles</h1>
+    <h1 class="text-2xl font-bold">Rollen</h1>
 
     <table class="table-auto w-full text-left">
         <tr class="">
-            <th class="w-20">ID</th>
-            <th class="w-72">Role</th>
+            <th class="w-20">Identificatie</th>
+            <th class="w-72">Rol</th>
             <th class="w-5"></th>
             <th class="w-5"></th>
         </tr>

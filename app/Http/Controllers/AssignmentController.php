@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Assignment;
+use App\Models\Workprocess;
+use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
@@ -17,23 +19,28 @@ class AssignmentController extends Controller
     
     public function create()
     {
-        return view('assignments.create');
+        $workprocesses = Workprocess::all();
+        return view('assignments.create', compact('workprocesses'));
     }
 
     public function store(Request $request)
     {
-    
+
         $request->validate([
             'title' => 'required',
-            'deadline' => 'nullable',
+            'deadline' => 'nullable|date',
+            'workprocess_id' => 'required|integer',
+            'author_id' => 'required|integer',
             'description' => 'nullable',
         ]);
     
-        // Create the assignment and capture the instance
         Assignment::create([
             'title' => $request->title,
             'deadline' => $request->deadline,
             'description' => $request->description,
+            'author_id' => $request->author_id ?? Auth::user()->id,
+            'workprocess_id' => $request->workprocess_id,
+            'description' => $request->input('assignment-trixFields')['description'],
         ]);
     
         return redirect()->route('assignments.index')
@@ -43,7 +50,7 @@ class AssignmentController extends Controller
 
     public function show(Assignment $assignment)
     {
-        $assignments = Assignment::all(); // or fetch assignments as needed
+        $assignments = Assignment::all(); 
         return view('assignments.show', compact('assignment'));
     }
 

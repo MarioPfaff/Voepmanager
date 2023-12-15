@@ -21,31 +21,43 @@ class RoleSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'Beheerder',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('roles')->insert([
             'name' => 'Docent',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('roles')->insert([
             'name' => 'Slber',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('roles')->insert([
             'name' => 'Student',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('roles')->insert([
             'name' => 'Stagebegeleider',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('roles')->insert([
             'name' => 'Auteur',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         /* Import all permissions. Add if there are more soon. */
@@ -53,54 +65,72 @@ class RoleSeeder extends Seeder
             'id' => '1',
             'name' => 'user.view',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '2',
             'name' => 'user.create',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '3',
             'name' => 'user.edit',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '4',
             'name' => 'user.delete',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '5',
             'name' => 'role.view',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '6',
             'name' => 'role.edit',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '7',
             'name' => 'role.delete',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '8',
             'name' => 'role.create',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
         DB::table('permissions')->insert([
             'id' => '9',
             'name' => 'workprocess.view',
             'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
  
  

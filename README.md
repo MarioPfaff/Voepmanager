@@ -4,11 +4,9 @@
 
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
-  - [Clone the Repository](#clone-the-repository)
   - [Install Dependencies](#install-dependencies)
-  - [Database Setup](#database-setup)
-- [Configuration](#configuration)
 - [Usage](#usage)
+  - [Database Setup](#database-setup)
   - [Run Migrations](#run-migrations)
   - [Database Setup](#database-setup)
 - [Run Seeders](#run-seeders)
@@ -38,53 +36,63 @@ Make sure you have the following installed:
     2. Update the .env file with your application-specific configuration.
 
 ### Run Migrations
-    1. php artisan migrate
-
-# Run Seeders
-    Populate the database by running the seeder.
-
-    1. php artisan db:seed
+    php artisan migrate:fresh --seed
 
 ## Sample Users
 
 ### Beheerder (Administrator)
 
-- **Name:** Admin
-- **Email:** beheerder@rocrivor.com
+- **Name:** Mario Pfaff
+- **Email:** m.pfaff@roc.beheerder.nl
+- **Password:** 12345678
+- **Role:** Beheerder
+
+- **Name:** Tomas van Westen
+- **Email:** t.vanwesten@roc.beheerder.nl
 - **Password:** 12345678
 - **Role:** Beheerder
 
 ### Docent (Teacher)
 
-- **Name:** Docent
-- **Email:** docent@rocrivor.nl
+- **Name:** Herbert Rietman
+- **Email:** h.rietman@roc.docent.nl
+- **Password:** 12345678
+- **Role:** Docent
+
+- **Name:** Hanneke Kool
+- **Email:** h.kool@roc.docent.nl
 - **Password:** 12345678
 - **Role:** Docent
 
 ### Slber (SLBer)
 
-- **Name:** Slber
-- **Email:** slber@rocrivor.nl
+- **Name:** Hanneke Kool
+- **Email:** h.kool@roc.slber.nl
 - **Password:** 12345678
 - **Role:** Slber
 
 ### Student
 
-- **Name:** Student
-- **Email:** student@rocrivor.nl
+- **Name:** Mario Pfaff
+- **Email:** m.pfaff@roc.student.nl
+- **Password:** 12345678
+- **Role:** Student
+
+- **Name:** Tomas van Westen
+- **Email:** t.vanwesten@roc.student.nl
 - **Password:** 12345678
 - **Role:** Student
 
 ### Stagebegeleider (Internship Supervisor)
 
-- **Name:** Stagebegeleider
-- **Email:** stagebegeleider@rocrivor.nl
+- **Name:** Erik Drent
+- **Email:** e.drent@roc.stagebegeleider.nl
 - **Password:** 12345678
 - **Role:** Stagebegeleider
 
 ### Auteur (Author)
 
-- **Name:** Auteur
-- **Email:** auteur@rocrivor.nl
+- **Name:** Hanneke Kool
+- **Email:** h.kool@roc.auteur.nl
 - **Password:** 12345678
 - **Role:** Auteur

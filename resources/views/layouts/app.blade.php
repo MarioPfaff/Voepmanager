@@ -17,6 +17,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script type="text/javascript" defer src="{{ asset('js/script.js') }}"></script>
         <script src="https://kit.fontawesome.com/9fbf5c5885.js" crossorigin="anonymous"></script>
+        @trixassets
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">

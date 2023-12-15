@@ -4,6 +4,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AssignmentController;
+use App\Models\Assignment;
+use App\Models\UserAssignment;
+use App\Models\UserAssignmentComment;
+use App\Models\UserAssignmentFile;
 use App\Http\Controllers\WorkprocessController;
 use App\Http\Controllers\AssignmentController;
 
@@ -107,6 +112,7 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
 // Route::group(['middleware' => ['permission:user.edit']], function () {
     Route::get('/workprocesses/edit/{workprocess}', [WorkprocessController::class, 'edit'])->name('workprocesses.edit');
     Route::put('/workprocesses/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
+    Route::get('/workprocesses/view/{workprocess}', [WorkprocessController::class, 'view'])->name('workprocesses.view');
 // });
 
 /* Deleting Workprocess */

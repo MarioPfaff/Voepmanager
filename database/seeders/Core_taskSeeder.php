@@ -15,10 +15,14 @@ class Core_taskSeeder extends Seeder
     {
         DB::table('core_tasks')->insert([
             'name' => 'Realiseert software',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         DB::table('core_tasks')->insert([
             'name' => 'Werkt in een ontwikkelteam',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

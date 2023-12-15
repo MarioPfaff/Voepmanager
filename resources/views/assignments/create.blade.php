@@ -22,14 +22,29 @@
             <div class="mb-6"><input type="text" name="title" id="title" placeholder="Titel"/></div>
         </div>
         <div>
-            <div class="mb-2 font-bold"><label for="description">Omschrijving</label></div>
-            <div class="mb-6"><input type="textarea" name="description" id="description" placeholder="Omschrijving"/></div>
+
+            <input id="description" value="description" type="hidden" name="description">
+            <trix-editor class="trix-editor" input="description"></trix-editor>
         </div>
         <div> 
             <div class="mb-2 font-bold"><label for="deadline">Deadline</label></div>
             <div class="mb-6"><input type="date" name="deadline" id="deadline" placeholder="Deadline"/></div>
         </div>
-        <br/>
+        <div>
+            <div class="mb-2 font-bold"><label for="workprocess">Werkproces</label></div>
+            <div class="mb-6">
+                <select name="workprocess_id">
+                    @foreach($workprocesses as $workprocess)
+                        <option value="{{ $workprocess->id }}">{{$workprocess->workprocess_title}}</option>
+                    @endforeach
+                </select> 
+            </div>
+        </div>
+
+        <div>
+            <input type="hidden" name="author_id" value="{{ Auth::user()->id }}">
+        </div>
+
         <div>
             <button type="submit">Creëer je opdracht</button>
         </div>
