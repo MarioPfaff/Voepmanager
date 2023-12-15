@@ -29,7 +29,7 @@ class UserController extends Controller
 
             /* Only says that the user's e-mail is already taken if it isn't taken by the current user. */
             'email' => 'required|email|unique:users,email,' . $user->id,
-
+            'roles' => 'nullable',
             'password' => 'nullable|string|min:8',
         ]);
 
