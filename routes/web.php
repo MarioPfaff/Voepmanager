@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AssignmentController;
 use App\Models\Assignment;
 use App\Models\UserAssignment;
 use App\Models\UserAssignmentComment;
