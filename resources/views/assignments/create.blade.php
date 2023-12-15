@@ -22,9 +22,9 @@
             <div class="mb-6"><input type="text" name="title" id="title" placeholder="Titel"/></div>
         </div>
         <div>
-
-            <input id="description" value="description" type="hidden" name="description">
-            <trix-editor class="trix-editor" input="description"></trix-editor>
+            <div class="mb-2 font-bold"><label for="description">Beschrijving</label></div>
+            <input id="description" type="hidden" name="description" value="">
+            <trix-editor class="trix-editor" input="description" name="description"></trix-editor>
         </div>
         <div> 
             <div class="mb-2 font-bold"><label for="deadline">Deadline</label></div>

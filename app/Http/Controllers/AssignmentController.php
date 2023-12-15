@@ -26,6 +26,8 @@ class AssignmentController extends Controller
     public function store(Request $request)
     {
 
+        //dd($request->all());
+
         $request->validate([
             'title' => 'required',
             'deadline' => 'nullable|date',
@@ -40,7 +42,7 @@ class AssignmentController extends Controller
             'description' => $request->description,
             'author_id' => $request->author_id ?? Auth::user()->id,
             'workprocess_id' => $request->workprocess_id,
-            'description' => $request->input('assignment-trixFields')['description'],
+            'description' => $request->input('description'),
         ]);
     
         return redirect()->route('assignments.index')
