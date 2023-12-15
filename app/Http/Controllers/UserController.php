@@ -31,10 +31,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
 
             'password' => 'nullable|string|min:8',
-            'roles' => 'required',
         ]);
-
-
 
         /* Checker for the password */
         if (empty($data['password'])) {
