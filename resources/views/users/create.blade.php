@@ -17,15 +17,15 @@
 
         <div>
             <x-input-label>Name</x-input-label>
-            <x-text-input><input type="text" name="name"  placeholder="Your name ..."/></x-text-input>
+            <input type="text" name="name"  placeholder="Your name ..."/>
         </div>
         <div>
             <x-input-label>Email</x-input-label>
-            <x-text-input><input type="text" name="email"  placeholder="Your email ..."/></x-text-input>
+            <input type="text" name="email"  placeholder="Your email ..."/>
         </div>
         <div> 
             <x-input-label>Password</x-input-label>
-            <x-text-input><input type="text" name="password"  placeholder="Your password ..."/></x-text-input>
+            <input type="text" name="password"  placeholder="Your password ..."/>
         </div>
         <br/>
         <div>

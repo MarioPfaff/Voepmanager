@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
     {
  
     $beheerderMario = User::create([
+        'id' => '1',
         'name' => 'Mario Pfaff',
         'email' => 'm.pfaff@roc.beheerder.nl',
         'password' => bcrypt('12345678'),
@@ -26,6 +27,7 @@ class UserSeeder extends Seeder
     $beheerderMario->assignRole('Beheerder');
 
     $beheerderTomas = User::create([
+        'id' => '2',
         'name' => 'Tomas van Westen',
         'email' => 't.vanwesten@roc.beheerder.nl',
         'password' => bcrypt('12345678'),
@@ -36,6 +38,7 @@ class UserSeeder extends Seeder
     $beheerderTomas->assignRole('Beheerder');
  
     $docentHerbert = User::create([
+        'id' => '3',
         'name' => 'Herbert Rietman',
         'email' => 'h.rietman@roc.docent.nl',
         'password' => bcrypt('12345678'),
@@ -46,6 +49,7 @@ class UserSeeder extends Seeder
     $docentHerbert->assignRole('Docent');
 
     $docentHanneke = User::create([
+        'id' => '4',
         'name' => 'Hanneke Kool',
         'email' => 'h.kool@roc.docent.nl',
         'password' => bcrypt('12345678'),
@@ -56,6 +60,7 @@ class UserSeeder extends Seeder
     $docentHanneke->assignRole('Docent');
  
     $slberHanneke = User::create([
+        'id' => '5',
         'name' => 'Hanneke Kool',
         'email' => 'h.kool@roc.slber.nl',
         'password' => bcrypt('12345678'),
@@ -66,6 +71,7 @@ class UserSeeder extends Seeder
     $slberHanneke->assignRole('Slber');
  
     $studentMario = User::create([
+        'id' => '6',
         'name' => 'Mario Pfaff',
         'email' => 'm.pfaff@roc.student.nl',
         'password' => bcrypt('12345678'),
@@ -76,6 +82,7 @@ class UserSeeder extends Seeder
     $studentMario->assignRole('Student');
 
     $studentTomas = User::create([
+        'id' => '7',
         'name' => 'Tomas van Westen',
         'email' => 't.vanwesten@roc.student.nl',
         'password' => bcrypt('12345678'),
@@ -86,6 +93,7 @@ class UserSeeder extends Seeder
     $studentTomas->assignRole('Student');
  
     $stagebegeleiderErik = User::create([
+        'id' => '8',
         'name' => 'Erik Drent',
         'email' => 'e.drent@roc.stagebegeleider.nl',
         'password' => bcrypt('12345678'),
@@ -96,6 +104,7 @@ class UserSeeder extends Seeder
     $stagebegeleiderErik->assignRole('Stagebegeleider');
  
     $auteurHanneke = User::create([
+        'id' => '9',
         'name' => 'Hanneke Kool',
         'email' => 'h.kool@roc.auteur.nl',
         'password' => bcrypt('12345678'),
