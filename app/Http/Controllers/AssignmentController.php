@@ -7,7 +7,6 @@ use App\Models\Assignment;
 use App\Models\Workprocess;
 use Illuminate\Support\Facades\Auth;
 
-
 class AssignmentController extends Controller
 {
 
@@ -26,12 +25,13 @@ class AssignmentController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'title' => 'required',
-            'deadline' => 'nullable',
+            'deadline' => 'nullable|date',
+            'workprocess_id' => 'required|integer',
+            'author_id' => 'required|integer',
             'description' => 'nullable',
-            'workprocess_id' => 'required',
-            'author_id' => 'required',
         ]);
     
         Assignment::create([
@@ -40,6 +40,7 @@ class AssignmentController extends Controller
             'description' => $request->description,
             'author_id' => $request->author_id ?? Auth::user()->id,
             'workprocess_id' => $request->workprocess_id,
+            'description' => $request->input('assignment-trixFields')['description'],
         ]);
     
         return redirect()->route('assignments.index')

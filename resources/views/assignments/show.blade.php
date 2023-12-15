@@ -6,7 +6,7 @@
 
     <div>
         <h3 class="font-bold mb-3 mt-6">Omschrijving</h3>
-        <p>{{ $assignment->description }}</p>
+        <p>{!!html_entity_decode($assignment->description) !!}</p>
     </div>
 
     <div>

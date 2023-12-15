@@ -62,4 +62,6 @@
         </tbody>
     </table>
     <br/>
+
+    {{ $assignments -> links() }}
 </x-app-layout>

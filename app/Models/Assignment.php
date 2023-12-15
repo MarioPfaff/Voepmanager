@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Workprocess;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 
 class Assignment extends Model
 {
     use HasFactory;
+    use HasTrixRichText;
+    
 
     protected $fillable = [
         'title',

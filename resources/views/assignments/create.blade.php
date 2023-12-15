@@ -22,8 +22,9 @@
             <div class="mb-6"><input type="text" name="title" id="title" placeholder="Titel"/></div>
         </div>
         <div>
-            <div class="mb-2 font-bold"><label for="description">Omschrijving</label></div>
-            <div class="mb-6"><input type="textarea" name="description" id="description" placeholder="Omschrijving"/></div>
+
+            <input id="description" value="description" type="hidden" name="description">
+            <trix-editor class="trix-editor" input="description"></trix-editor>
         </div>
         <div> 
             <div class="mb-2 font-bold"><label for="deadline">Deadline</label></div>
