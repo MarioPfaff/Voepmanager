@@ -13,3 +13,13 @@ table tr td:nth-of-type(4n+1) {
 table tr td:nth-of-type(1n+5) {
     border-radius: 0px 5px 5px 0px;
 }
+
+
+/* Icons */
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
