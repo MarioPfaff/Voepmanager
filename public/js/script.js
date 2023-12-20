@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterDropdown = document.getElementById('filterDropdown');
     const workprocessTable = document.getElementById('workprocessTable');
 
-    filterDropdown.addEventListener('change', function() {
+    filterDropdown.addEventListener('input', function() {
         const selectedValue = filterDropdown.value;
         const rows = workprocessTable.getElementsByTagName('tr');
 
@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const row = rows[i];
             const cells = row.getElementsByTagName('td');
 
-            // Controleer of er minimaal twee cellen zijn (kerntaak en anderen)
+            // Check if there are at least two cells (kerntaak and others)
             if (cells.length >= 2) {
-                const cell = cells[1]; // Index van de tweede cel (kerntaak)
+                const cell = cells[1]; // Index of the second cell (kerntaak)
 
-                if (selectedValue === '' || cell.innerText === selectedValue) {
+                if (selectedValue === '' || cell.textContent === selectedValue) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
