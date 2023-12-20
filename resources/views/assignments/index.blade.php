@@ -1,21 +1,4 @@
 <x-app-layout>
-    <style>
-        tbody tr:nth-of-type(even) {
-            background-color: #f1f1f1;
-        }
-
-        table tr td, table tr th {
-            padding: 5px 12px;
-        }
-        
-        table tr td:nth-of-type(4n+1) {
-            border-radius: 5px 0px 0px 5px;
-        }
-
-        table tr td:nth-of-type(1n+5) {
-            border-radius: 0px 5px 5px 0px;
-        }
-    </style>
 
     @if (session('error'))
         <div class="alert-success">
@@ -60,7 +43,7 @@
                     </p></td>
 
                     <td class="w-5"><p>{{ $assignment->status }}</p></td>
-                    <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p>Bekijken</p></a></td>
+                    <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p><img src="{{ asset('images/forward.svg')}}" alt="Bekijken"></p></a></td>
                 </tr>
             @endforeach
         </tbody>
