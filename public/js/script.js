@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (successMessage) {
         setTimeout(function() {
             successMessage.style.display = 'none';
-        }, 4000); // Verberg de success-melding na 5 seconden (5000 milliseconden)
+        }, 4000); // Verberg de success-melding na 4 seconden (4000 milliseconden)
     }
 });
 
