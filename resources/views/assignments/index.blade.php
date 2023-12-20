@@ -18,15 +18,19 @@
     </style>
 
     @if (session('error'))
-        <x-notification-danger>
-            {{ session('error') }}
-        </x-notification-danger>
+        <div class="alert-success">
+            <x-notification-danger>
+                {{ session('error') }}
+            </x-notification-danger>
+        </div>
     @endif
 
     @if (session('success'))
-        <x-notification-success>
-            {{ session('success') }}
-        </x-notification-success>
+        <div class="alert-success">
+            <x-notification-success>
+                {{ session('success') }}
+            </x-notification-success>
+        </div>
     @endif
 
     <h1 class="text-2xl font-bold">Opdrachten</h1>
