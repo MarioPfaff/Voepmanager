@@ -22,7 +22,7 @@
         <tr class="">
             <th class="w-5"></th>
             <th class="w-5"></th>
-            <th class="w-20">Identificatie</th>
+            <th class="w-20">Id</th>
             <th class="w-72">Rol</th>
         </tr>
 

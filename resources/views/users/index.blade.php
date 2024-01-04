@@ -16,17 +16,17 @@
         </div>
     @endif
 
-    <h1 class="text-2xl font-bold">Accounts</h1>
+    <h1 class="text-2xl font-bold">Gebruikers</h1>
 
     <x-primary-button class="my-6">
-        <a href="{{ route('users.create') }}">Maak een account aan</a>
+        <a href="{{ route('users.create') }}">Gebruiker creëren</a>
     </x-primary-button>
 
     <table class="table-auto w-full text-left">
         <tr>
             <th class="w-5"></th>
             <th class="w-5"></th>
-            <th class="w-10">Identificatie</th>
+            <th class="w-10">Id</th>
             <th class="w-24">Naam</th>
             <th class="w-5">Email</th>                            
             <th class="w-24">Rol</th>

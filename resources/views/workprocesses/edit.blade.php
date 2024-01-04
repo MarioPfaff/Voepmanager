@@ -16,7 +16,7 @@
         @method('PUT')
 
         <div>
-            <x-input-label>Crebo nummer</x-input-label>
+            <x-input-label>Crebonummer</x-input-label>
             <x-text-input type="number" name="crebo" value="{{$workprocess->crebo}}" onkeypress="if(this.value.length==10) return false;"></x-text-input>
         </div>
         <div>
@@ -36,16 +36,15 @@
             </select>
         </div>
         <div>
-            <x-input-label>Werkprocess</x-input-label>
+            <x-input-label>Werkproces</x-input-label>
             <x-text-input maxlength="10" type="text" name="workprocess_number" value="{{$workprocess->workprocess_number}}"></x-text-input>
         </div>
         <div>
             <x-input-label>Titel</x-input-label>
-            <x-input-label>Titel</x-input-label>
             <x-text-input type="text" name="workprocess_title" value="{{$workprocess->workprocess_title}}"></x-text-input>
         </div>
 
-            <x-primary-button type="submit"> Toepassen </x-primary-button>
+            <x-primary-button class="my-6" type="submit"> Toepassen </x-primary-button>
         </div>
     </form>
 

@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-back-button/>
-    <h1 class="text-2xl font-bold mb-8">Create User</h1>
+    <h1 class="text-2xl font-bold mb-8">Gebruiker creëren</h1>
 
     @if($errors->any())
         <x-notification-danger>
@@ -16,22 +16,19 @@
         @method('POST')
 
         <div>
-            <x-input-label>Name</x-input-label>
-            <input type="text" name="name"  placeholder="Your name ..."/>
+            <x-input-label>Naam</x-input-label>
+            <input type="text" name="name"  placeholder="Jouw naam ..."/>
         </div>
         <div>
             <x-input-label>Email</x-input-label>
-            <input type="text" name="email"  placeholder="Your email ..."/>
+            <input type="text" name="email"  placeholder="Jouw email ..."/>
         </div>
         <div> 
-            <x-input-label>Password</x-input-label>
-            <input type="text" name="password"  placeholder="Your password ..."/>
+            <x-input-label>Wachtwoord</x-input-label>
+            <input type="text" name="password"  placeholder="Jouw wachtwoord ..."/>
         </div>
-        <br/>
-        <div>
-            <x-primary-button>
-                <input type="submit" value="Create A New User"/>
-            </x-primary-button> 
+
+            <x-primary-button class="my-6" type="submit"> creëren </x-primary-button>
         </div>
     </form>
 

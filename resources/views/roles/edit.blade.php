@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-back-button/>
-    <h1 class="text-2xl font-bold mb-8">Aanpassen: {{$role->name}}</h1>
+    <h1 class="text-2xl font-bold mb-8">Rol aanpassen: {{$role->name}}</h1>
 
     @if($errors->any())
         <x-notification-danger>
@@ -31,9 +31,8 @@
                     <label for="{{ $permission->id }}"> {{ $permission->name }} </label>
                 @endforeach
         </div>
-        <br/>
-        <div>
-            <x-primary-button type="submit"> Opslaan </x-primary-button>
+        
+            <x-primary-button class="my-6" type="submit"> Toepassen </x-primary-button>
         </div>
     </form>
 </x-app-layout>

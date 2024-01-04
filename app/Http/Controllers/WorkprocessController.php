@@ -46,7 +46,7 @@ class WorkprocessController extends Controller
     /* create functions */
     public function create() {
         $core_tasks = Core_task::all();
-        return view('workprocesses/create', compact('core_tasks'));
+        return view('workprocesses.create', compact('core_tasks'));
     }
 
     public function store(Request $request) {
@@ -70,7 +70,7 @@ class WorkprocessController extends Controller
         $workprocess->save();
 
         /* Redirect to the workprocess overview page */
-        return to_route('workprocesses.index')->with('success', 'werkprocess succesvol aangemaakt!');
+        return to_route('workprocesses.index')->with('success', 'Werkprocess succesvol aangemaakt!');
     }
     /* end create functions */
 
@@ -79,7 +79,7 @@ class WorkprocessController extends Controller
         $workprocess = Workprocess::find($id);
         $workprocess->delete();
         /* Redirect to the workprocess overview page */
-        return to_route('workprocesses.index')->with('success', 'werkprocess succesvol verwijderd!');
+        return to_route('workprocesses.index')->with('success', 'Werkprocess succesvol verwijderd!');
     }
 
     public function view($id) {

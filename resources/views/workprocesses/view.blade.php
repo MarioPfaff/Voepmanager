@@ -1,4 +1,7 @@
 <x-app-layout>
+
+    <x-back-button/>
+
     @if (session('error'))
         <div class="alert-success">
             <x-notification-danger>

@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-back-button/>
-    <h1 class="text-2xl font-bold mb-8">Maak een opdracht</h1>
+    <h1 class="text-2xl font-bold mb-8">Opdracht creëren</h1>
 
     @if($errors->any())
         <x-notification-danger>
@@ -46,7 +46,7 @@
         </div>
 
         <div>
-            <button type="submit">Creëer je opdracht</button>
+            <x-primary-button type="submit"> Creëren </x-primary-button>
         </div>
     </form>
 

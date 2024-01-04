@@ -19,7 +19,7 @@
     <h1 class="text-2xl font-bold">Opdrachten</h1>
 
     <x-primary-button class="my-6">
-        <a href="{{ route('assignments.create') }}">Nieuwe opdracht</a>
+        <a href="{{ route('assignments.create') }}">Opdracht creëren</a>
     </x-primary-button>
 
     <table class="table-auto w-full text-left">

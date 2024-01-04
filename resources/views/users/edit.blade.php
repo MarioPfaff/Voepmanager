@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-back-button/>
-    <h1 class="text-2xl font-bold mb-8">Editing User: {{$user->name}}</h1>
+    <h1 class="text-2xl font-bold mb-8">Gebruiker aanpassen: {{$user->name}}</h1>
 
     @if($errors->any())
         <x-notification-danger>
@@ -16,7 +16,7 @@
         @method('PUT')
 
         <div>
-            <x-input-label>Name</x-input-label>
+            <x-input-label>Naam</x-input-label>
             <x-text-input type="text" name="name" value="{{$user->name}}"></x-text-input>
         </div>
         <div>
@@ -25,7 +25,7 @@
         </div>
 
         <div>
-            <x-input-label>Role</x-input-label>
+            <x-input-label>Rol</x-input-label>
 
             <select name="roles">
                 @foreach($roles as $role)
@@ -42,12 +42,11 @@
         </div>
 
         <div> 
-            <x-input-label>Password</x-input-label>
+            <x-input-label>Wachtwoord</x-input-label>
             <x-text-input type="password" name="password" placeholder="New password ..."></x-text-input>
         </div>
-        <br/>
-        <div>
-            <x-primary-button type="submit"> Save Changes </x-primary-button>
+        
+            <x-primary-button class="my-6" type="submit"> Toepassen </x-primary-button>
         </div>
     </form>
 
