@@ -61,6 +61,9 @@ class RoleSeeder extends Seeder
         ]);
  
         /* Import all permissions. Add if there are more soon. */
+
+        /* Toestemmingen: Gebruikers */
+
         DB::table('permissions')->insert([
             'id' => '1',
             'name' => 'user.view',
@@ -93,6 +96,8 @@ class RoleSeeder extends Seeder
             'updated_at' => now(),
         ]);
  
+        /* Toestemmingen: Rollen */
+
         DB::table('permissions')->insert([
             'id' => '5',
             'name' => 'role.view',
@@ -124,10 +129,70 @@ class RoleSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        /* Toestemmingen: Werkprocessen */
  
         DB::table('permissions')->insert([
             'id' => '9',
             'name' => 'workprocess.view',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('permissions')->insert([
+            'id' => '10',
+            'name' => 'workprocess.edit',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('permissions')->insert([
+            'id' => '11',
+            'name' => 'workprocess.delete',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('permissions')->insert([
+            'id' => '12',
+            'name' => 'workprocess.create',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        /* Toestemmingen: Opdrachten */
+
+        DB::table('permissions')->insert([
+            'id' => '13',
+            'name' => 'assignment.create',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('permissions')->insert([
+            'id' => '14',
+            'name' => 'assignment.edit',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('permissions')->insert([
+            'id' => '15',
+            'name' => 'assignment.delete',
+            'guard_name' => 'web',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('permissions')->insert([
+            'id' => '16',
+            'name' => 'assignment.view',
             'guard_name' => 'web',
             'created_at' => now(),
             'updated_at' => now(),

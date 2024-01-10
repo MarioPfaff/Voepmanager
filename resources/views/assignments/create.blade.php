@@ -23,7 +23,7 @@
         </div>
         <div>
 
-            <input id="description" value="description" type="hidden" name="description">
+            <input id="description" value="" type="hidden" name="description">
             <trix-editor class="trix-editor" input="description"></trix-editor>
         </div>
         <div> 

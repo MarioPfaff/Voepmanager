@@ -33,6 +33,10 @@
                         {{ __('Werkprocessen') }}
                     </x-nav-link>
                     {{-- @endcan --}}
+
+                    <x-nav-link :href="route('assignments.index')" :active="request()->routeIs('assignments.index')">
+                        {{ __('Opdrachten') }}
+                    </x-nav-link>
                 </div>
             </div>
 
