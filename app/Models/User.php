@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Assignment;
+use App\Models\UserAssignment;
 
 class User extends Authenticatable
 {
@@ -29,6 +30,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Assignment::class)->using(UserAssignment::class);
     }
+
+    public function userAssignments()
+    {
+        return $this->hasMany(UserAssignment::class);
+    }
+
+
 
     /**
      * The attributes that should be hidden for serialization.

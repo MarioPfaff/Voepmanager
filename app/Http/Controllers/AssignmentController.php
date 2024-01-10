@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Assignment;
 use App\Models\Workprocess;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AssignmentController extends Controller
 {
     public function index()
     {
+
         $assignments = Assignment::paginate(15);
         return view('assignments.index', compact('assignments'));
     }

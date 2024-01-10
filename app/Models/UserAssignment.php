@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Assignment;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Models\UserAssignmentComment;
+use App\Models\UserAssignmentFile;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class UserAssignment extends Model
 {
@@ -31,8 +36,12 @@ class UserAssignment extends Model
     /**
      * Get the user associated with the user assignment.
      */
-    public function user()
+    public function student()
     {
+        return $this->hasMany(User::class);
+    }
+
+    public function docent() {
         return $this->belongsTo(User::class);
     }
 

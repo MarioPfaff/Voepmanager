@@ -37,5 +37,10 @@ return new class extends Migration
         Schema::dropIfExists('user_assignment_comments');
         Schema::dropIfExists('user_assignment_files');
         Schema::dropIfExists('assignment_files');
+        Schema::dropIfExists('student_assignments');
+        Schema::dropIfExists('student_assignment_comments');
+        Schema::dropIfExists('student_assignment_files');
+        Schema::dropIfExists('assignment_files');
+
     }
 };

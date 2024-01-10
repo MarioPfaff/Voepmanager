@@ -11,6 +11,7 @@ use App\Models\UserAssignment;
 use App\Models\UserAssignmentComment;
 use App\Models\UserAssignmentFile;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::get('/opdrachten/edit/{assignment}', [AssignmentController::class, 'edit'
 Route::put('/opdrachten/update/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
 Route::get('/opdrachten/destroy/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
 
+/* UserAssignment routes */
+Route::get('/userassignments', [UserAssignmentController::class, 'index'])->name('userassignments.index');
 
 /* Route for login */
 Route::get('/dashboard', function () {
