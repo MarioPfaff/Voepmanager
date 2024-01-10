@@ -12,6 +12,7 @@ use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Models\Assignment;
 
+
 class UserAssignmentController extends Controller 
 {    
     use HasFactory, Notifiable, HasRoles;
@@ -21,7 +22,7 @@ class UserAssignmentController extends Controller
         $user = User::find(Auth::user()->id);
         /* Test om de boolean te checken van gebruiker:
            dd($user->hasRole('Student')); */
-        
+
         if ($user->hasRole('Student')) {
             $userassignments = UserAssignment::where('student_id', $user->id)->paginate(15);
         }
@@ -40,13 +41,28 @@ class UserAssignmentController extends Controller
     public function view($id) {
         $userassignment = UserAssignment::find($id);
     
-        if (!$userassignment) {
-            abort(404);
-        }
-    
         $assignment = $userassignment->assignment;
     
         return view('userassignments.view', compact('userassignment', 'assignment'));
+    }
+
+
+    public function store(Request $request) {
+        $validatedData = $request->validate([
+            'student_answer' => 'required|string|max:255',
+        ]);
+    
+        $user = User::find(Auth::user()->id);
+    
+        if (!$user->hasRole('Beheerder', 'Auteur')) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+    
+        $userAssignment = new UserAssignment($validatedData);
+    
+        $user->userAssignments()->save($userAssignment);
+    
+        return redirect()->route('userassignments.index');
     }
     
 }
