@@ -15,31 +15,29 @@ return new class extends Migration
     public function up(): void
     {
         /* The pivot table for the many-to-many relationship between users and assignments. */
-        Schema::create('user_assignment', function (Blueprint $table) {
-            $table->timestamps();
+        Schema::create('student_assignment', function (Blueprint $table) {
             $table->id();
-
-            /* Links to the right tables */
+            $table->foreignId('docent_id')->constrained('users');
+            $table->foreignId('student_id')->constrained('users');
             $table->foreignIdFor(Assignment::class);
-            $table->foreignIdFor(User::class);
-            
-            /* Status on the specific assignment */
             $table->enum('phase', ['Niet ingeleverd', 'Ingeleverd, niet nagekeken', 'Nagekeken'])->default('Niet ingeleverd');
             $table->enum('progress', ['Goedgekeurd', 'Foutgekeurd', 'Niet beoordeeld'])->default('Niet beoordeeld');
+            $table->timestamps();
         });
 
         /* Comments that are specifically on the submission of the student, private comments. */
-        Schema::create('user_assignment_comments', function (Blueprint $table) {
+        Schema::create('assignment_comments', function (Blueprint $table) {
             $table->timestamps();
             $table->id();
     
             $table->foreignIdFor(UserAssignment::class);
-            $table->enum('role', ['Docent', 'Student', 'Stagebegeleider']);
+            $table->foreignIdFor(User::class);
+            // $table->enum('role', ['Docent', 'Student', 'Stagebegeleider']);
             $table->text('comment');
         });
 
         /* Files that are specifically on the submission of the student, private files. */
-        Schema::create('user_assignment_files', function (Blueprint $table) {
+        Schema::create('student_assignment_files', function (Blueprint $table) {
             $table->timestamps();
             $table->id();
 

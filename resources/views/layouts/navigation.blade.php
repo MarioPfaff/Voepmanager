@@ -28,20 +28,21 @@
                     </x-nav-link>
                     @endcan
 
-                    {{-- @can('workprocess.view') --}}
+                    @can('workprocess.view')
                     <x-nav-link :href="route('workprocesses.index')" :active="request()->routeIs('workprocesses.index')">
                         {{ __('Werkprocessen') }}
                     </x-nav-link>
-                    {{-- @endcan --}}
+                    @endcan
 
                     <x-nav-link :href="route('assignments.index')" :active="request()->routeIs('assignments.index')">
                         {{ __('Opdrachten') }}
                     </x-nav-link>
-                    {{-- @can('core_tasks.view') --}}
+                    
+                    @can('core_tasks.view')
                     <x-nav-link :href="route('core_tasks.index')" :active="request()->routeIs('core_tasks.index')">
                         {{ __('Kerntaken') }}
                     </x-nav-link>
-                    {{-- @endcan --}}
+                    @endcan
                 </div>
             </div>
 

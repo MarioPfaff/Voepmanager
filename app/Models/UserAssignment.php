@@ -10,7 +10,15 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class UserAssignment extends Model
 {
-    protected $fillable = ['phase', 'progress', 'assignment_id', 'user_id', 'created_at', 'updated_at', ]; 
+    protected $fillable = [
+        'phase', 
+        'progress',
+        'assignment_id', 
+        'docent_id', 
+        'student_id', 
+        'created_at', 
+        'updated_at'
+    ]; 
 
     /**
      * Get the assignment associated with the user assignment.
