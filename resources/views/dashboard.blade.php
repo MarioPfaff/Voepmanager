@@ -2,6 +2,6 @@
 
 <h1 class="text-2xl font-bold mb-5">Dashboard</h1>
 
-Welcome, {{ Auth::user()->name }}! You're now logged in. You can browse the application using the navigational menu.
+Welkom, {{ Auth::user()->name }}! U bent ingelogd. U kunt de applicatie navigeren met het navigatie menu.
 
 </x-app-layout>

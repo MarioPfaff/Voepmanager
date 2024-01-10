@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     filterDropdown.addEventListener('input', function() {
         const selectedValue = filterDropdown.value;
         const rows = workprocessTable.getElementsByTagName('tr');
-
         for (let i = 0; i < rows.length; i++) {
             const row = rows[i];
             const cells = row.getElementsByTagName('td');

@@ -2,14 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WorkprocessController;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\CoretaskController;
 use App\Http\Controllers\UserController;
 use App\Models\Assignment;
 use App\Models\UserAssignment;
 use App\Models\UserAssignmentComment;
 use App\Models\UserAssignmentFile;
-use App\Http\Controllers\WorkprocessController;
-use App\Http\Controllers\AssignmentController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,25 +99,48 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
 
 /* Viewing Workprocess  */
 // Route::group(['middleware' => ['permission:workprocess.view']], function () {
-    Route::get('/workprocesses', [WorkprocessController::class, 'index'])->name('workprocesses.index');
+    Route::get('/werkprocessen', [WorkprocessController::class, 'index'])->name('workprocesses.index');
 // });
 
 /* Creating Workprocess  */
 // Route::group(['middleware' => ['permission:role.create']], function () {
-    Route::get('/workprocesses/create', [WorkprocessController::class, 'create'])->name('workprocesses.create');
-    Route::post('/workprocesses', [WorkprocessController::class, 'store'])->name('workprocesses.store');
+    Route::get('/werkprocessen/create', [WorkprocessController::class, 'create'])->name('workprocesses.create');
+    Route::post('/werkprocessen', [WorkprocessController::class, 'store'])->name('workprocesses.store');
 // });
 
 /* Editing Workprocess  */
 // Route::group(['middleware' => ['permission:user.edit']], function () {
-    Route::get('/workprocesses/edit/{workprocess}', [WorkprocessController::class, 'edit'])->name('workprocesses.edit');
-    Route::put('/workprocesses/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
-    Route::get('/workprocesses/view/{workprocess}', [WorkprocessController::class, 'view'])->name('workprocesses.view');
+    Route::get('/werkprocessen/edit/{workprocess}', [WorkprocessController::class, 'edit'])->name('workprocesses.edit');
+    Route::put('/werkprocessen/update/{workprocess}', [WorkprocessController::class, 'update'])->name('workprocesses.update');
+    Route::get('/werkprocessen/view/{workprocess}', [WorkprocessController::class, 'view'])->name('workprocesses.view');
 // });
 
 /* Deleting Workprocess */
 // Route::group(['middleware' => ['permission:role.delete']], function () {
-    Route::get('workprocesses/destroy/{id}', [WorkprocessController::class, 'destroy']);
+    Route::get('werkprocessen/destroy/{id}', [WorkprocessController::class, 'destroy']);
+// });
+
+
+/* Viewing Core tasks  */
+// Route::group(['middleware' => ['permission:workprocess.view']], function () {
+    Route::get('/kerntaken', [CoretaskController::class, 'index'])->name('core_tasks.index');
+// });
+
+/* Creating core task  */
+// Route::group(['middleware' => ['permission:role.create']], function () {
+    Route::get('/kerntaken/create', [CoretaskController::class, 'create'])->name('core_tasks.create');
+    Route::post('/kerntaken', [CoretaskController::class, 'store'])->name('core_tasks.store');
+// });
+
+/* Editing core task  */
+// Route::group(['middleware' => ['permission:user.edit']], function () {
+    Route::get('/kerntaken/edit/{core_task}', [CoretaskController::class, 'edit'])->name('core_tasks.edit');
+    Route::put('/kerntaken/update/{core_task}', [CoretaskController::class, 'update'])->name('core_tasks.update');
+// });
+
+/* Deleting core task */
+// Route::group(['middleware' => ['permission:role.delete']], function () {
+    Route::get('kerntaken/destroy/{id}', [CoretaskController::class, 'destroy']);
 // });
 
 require __DIR__.'/auth.php';

@@ -1,4 +1,7 @@
 <x-app-layout>
+
+    <x-back-button/>
+
     @if (session('error'))
         <div class="alert-success">
             <x-notification-danger>
@@ -38,7 +41,7 @@
                     @endif                    
                     </p></td>
                     <td class="w-5"><p>{{ $assignment->status }}</p></td>
-                    <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p>Bekijken</p></a></td>
+                    <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p><img src="{{ asset('images/forward.svg')}}" alt="Bekijken"></p></a></td>
                 </tr>
             @endforeach
         </tbody>

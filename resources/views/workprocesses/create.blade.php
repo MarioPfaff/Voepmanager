@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-back-button/>
-    <h1 class="text-2xl font-bold mb-8">Werkprocess creëren</h1>
+    <h1 class="text-2xl font-bold mb-8">Werkproces creëren</h1>
 
     @if($errors->any())
         <x-notification-danger>
@@ -16,7 +16,7 @@
         @method('POST')
 
         <div>
-            <x-input-label>Crebo nummer</x-input-label>
+            <x-input-label>Crebonummer</x-input-label>
             <x-text-input type="number" name="crebo" placeholder="25604" onkeypress="if(this.value.length==10) return false;"></x-text-input>
         </div>
         <div>
@@ -31,7 +31,7 @@
             </select>
         </div>
         <div>
-            <x-input-label>Werkprocess</x-input-label>
+            <x-input-label>Werkproces</x-input-label>
             <x-text-input maxlength="10" type="text" name="workprocess_number" placeholder="B1-K1-W1"></x-text-input>
         </div>
         <div>
@@ -39,7 +39,7 @@
             <x-text-input type="text" name="workprocess_title" placeholder="Plant werkzaamheden"></x-text-input>
         </div>
 
-            <x-primary-button type="submit"> Creëren </x-primary-button>
+            <x-primary-button class="my-6" type="submit"> creëren </x-primary-button>
         </div>
     </form>
 

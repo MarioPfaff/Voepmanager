@@ -10,11 +10,11 @@
           <div class="bg-white overflow-hidden sm:rounded-lg">
               <div class="p-6 text-gray-900 text-center">
                   <x-primary-button>
-                      <a href="{{ route('login') }}">Login</a>
+                      <a href="{{ route('login') }}">Inloggen</a>
                   </x-primary-button>
 
                   <x-secondary-button>
-                      <a href="{{ route('register') }}">Register</a>
+                      <a href="{{ route('register') }}">Registreren</a>
                   </x-secondary-button>
               </div>
           </div>
