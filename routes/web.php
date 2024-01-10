@@ -117,7 +117,7 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
 
 /* Deleting Workprocess */
 // Route::group(['middleware' => ['permission:role.delete']], function () {
-    Route::get('werkprocessen/destroy/{id}', [WorkprocessController::class, 'destroy']);
+    Route::get('werkprocessen/destroy/{id}', [WorkprocessController::class, 'destroy'])->name('workprocesses.delete');
 // });
 
 
@@ -140,7 +140,7 @@ Route::group(['middleware' => ['permission:role.delete']], function () {
 
 /* Deleting core task */
 // Route::group(['middleware' => ['permission:role.delete']], function () {
-    Route::get('kerntaken/destroy/{id}', [CoretaskController::class, 'destroy']);
+    Route::get('kerntaken/destroy/{id}', [CoretaskController::class, 'destroy'])->name('core_tasks.delete');
 // });
 
 require __DIR__.'/auth.php';
