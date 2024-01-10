@@ -30,12 +30,14 @@ class UserAssignment extends Model
      */
     public function assignment()
     {
-        return $this->belongsTo(Assignment::class);
+        return $this->belongsTo(Assignment::class, 'assignment_id');
     }
 
     /**
      * Get the user associated with the user assignment.
      */
+
+    /* Mario */
     public function student()
     {
         return $this->hasMany(User::class, 'student_id');
@@ -44,6 +46,7 @@ class UserAssignment extends Model
     public function docent() {
         return $this->belongsTo(User::class, 'docent_id');
     }
+    /* End Mario */
 
     /**
      * Get the comments associated with the user assignment.

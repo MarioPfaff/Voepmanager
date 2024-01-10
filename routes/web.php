@@ -41,6 +41,7 @@ Route::get('/opdrachten/destroy/{assignment}', [AssignmentController::class, 'de
 
 /* UserAssignment routes */
 Route::get('/userassignments', [UserAssignmentController::class, 'index'])->name('userassignments.index');
+Route::get('/userassignments/view/{id}' , [UserAssignmentController::class, 'view'])->name('userassignments.view');
 
 /* Route for login */
 Route::get('/dashboard', function () {

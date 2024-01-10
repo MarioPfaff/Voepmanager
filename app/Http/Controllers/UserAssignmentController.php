@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
+use App\Models\Assignment;
 
 class UserAssignmentController extends Controller 
 {    
@@ -35,4 +36,17 @@ class UserAssignmentController extends Controller
         
         return view('userassignments.index', compact('userassignments'));
     }
+
+    public function view($id) {
+        $userassignment = UserAssignment::find($id);
+    
+        if (!$userassignment) {
+            abort(404);
+        }
+    
+        $assignment = $userassignment->assignment;
+    
+        return view('userassignments.view', compact('userassignment', 'assignment'));
+    }
+    
 }

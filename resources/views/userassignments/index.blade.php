@@ -39,7 +39,7 @@
                     </p></td>
 
                     <td class="w-5"><p>{{ $userassignment->phase }}</p></td>
-
+                    <td class="w-5"><a href="{{ route('userassignments.view', ['id' => $userassignment]) }}"><p>Bekijken</p></a></td>
 
                 </tr>
             @endforeach
