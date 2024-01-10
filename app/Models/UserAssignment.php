@@ -15,6 +15,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 class UserAssignment extends Model
 {
+    protected $table = 'student_assignments';
+
+    // split the column user_id to docent_id and student_id
     protected $fillable = [
         'phase', 
         'progress',
@@ -30,21 +33,22 @@ class UserAssignment extends Model
      */
     public function assignment()
     {
-        return $this->belongsTo(Assignment::class, 'assignment_id');
+        return $this->belongsTo(Assignment::class, 'assignment_id', 'id');
     }
 
     /**
      * Get the user associated with the user assignment.
      */
-
-    /* Mario */
-    public function student()
+    // Relation with the user (docent)
+    public function docent()
     {
-        return $this->hasMany(User::class, 'student_id');
+        return $this->belongsTo(User::class, 'docent_id', 'id');
     }
 
-    public function docent() {
-        return $this->belongsTo(User::class, 'docent_id');
+    // Relation with the user (student)
+    public function student()
+    {
+        return $this->BelongsTo(User::class, 'student_id', 'id');
     }
     /* End Mario */
 

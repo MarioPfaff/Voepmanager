@@ -19,22 +19,62 @@ class UserAssignmentController extends Controller
     public function index() {
         /* Mario */
         $user = User::find(Auth::user()->id);
-        /* Test om de boolean te checken van gebruiker:
-           dd($user->hasRole('Student')); */
+        /* Test om de boolean te checken van gebruiker: */
+        //    dd($user->name);
+        //    dd($user->hasRole('Student'));
         
         if ($user->hasRole('Student')) {
             $userassignments = UserAssignment::where('student_id', $user->id)->paginate(15);
+            return view('userassignments.index', compact('userassignments'));
         }
 
-        if ($user->hasRole('Docent')) {
-            $userassignments = UserAssignment::where('docent_id', $user->id)->paginate(15);
-        }
+        // if ($user->hasRole('Docent')) {
+        //     $userassignments = UserAssignment::where('docent_id', $user->id)->paginate(15);
+        //     return view('userassignments.create', compact('userassignments'));
+        // }
 
         if ($user->hasRole('Beheerder', 'Auteur')) {
             $userassignments = UserAssignment::paginate(15);
         }
         
-        return view('userassignments.index', compact('userassignments'));
+    }
+
+    public function create() {
+        // vindt de huidige user
+        $user = User::find(Auth::user()->id);
+        $students = User::role('Student')->get();
+        dd($students);
+
+        //check of de user een docent is
+        if ($user->hasRole('Docent')) {
+            $userassignments = UserAssignment::All();
+            return view('userassignments.create', compact('userassignments'));
+        }
+        
+    }
+
+    public function store(Request $request) {
+        /* Validate the form */
+        $data = $request->validate([
+            'student_id' => 'required',
+            'docent_id' => 'required',
+            'assignment_id' => 'required',
+            // 'phase' => 'required|string|max:11',
+        ]);
+
+        /* Assign the student to the assignment */
+        $userassignment = Userassignment::create([
+            'student_id' => $request->student_id,
+            'docent_id' => $request->docent_id ?? Auth::user()->id,
+            'assignment_id' => $request->student_id,
+            // 'crebo' => $data['crebo'],
+        ]);
+
+        /* Save the created object in variable userassignment */
+        $userassignment->save();
+
+        /* Redirect to the assignment overview page */
+        return to_route('assignment.index')->with('success', 'Opdracht toegewezen!');
     }
 
     public function view($id) {

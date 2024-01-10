@@ -26,7 +26,7 @@ use App\Http\Controllers\UserAssignmentController;
 
 /* Root of the application */
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 /* Assignment routes */
@@ -42,6 +42,9 @@ Route::get('/opdrachten/destroy/{assignment}', [AssignmentController::class, 'de
 /* UserAssignment routes */
 Route::get('/userassignments', [UserAssignmentController::class, 'index'])->name('userassignments.index');
 Route::get('/userassignments/view/{id}' , [UserAssignmentController::class, 'view'])->name('userassignments.view');
+
+Route::get('/userassignments/create', [UserAssignmentController::class, 'create'])->name('userassignments.create');
+Route::post('/userassignments', [UserAssignmentController::class, 'store'])->name('userassignments.store');
 
 /* Route for login */
 Route::get('/dashboard', function () {

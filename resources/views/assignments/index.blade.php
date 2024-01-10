@@ -19,12 +19,16 @@
     <h1 class="text-2xl font-bold">Opdrachten</h1>
 
     
+    {{-- @if (Auth::user()->hasRole('Beheerder')) --}}
     <x-primary-button class="my-6">
         <a href="{{ route('assignments.create') }}">Opdracht creëren</a>
     </x-primary-button>
+    {{-- @endif --}}
 
     <table class="table-auto w-full text-left">
         <tr>
+            <th class="w-2"></th>
+            <th class="w-2"></th>
             <th class="w-24">Opdracht</th>
             <th class="w-5">Gepubliceerd</th>
             <th class="w-5">Status</th>
@@ -34,6 +38,8 @@
         <tbody>
             @foreach($assignments as $assignment) 
                 <tr class="">
+                    <td class="w-5"><a href="{{ route('assignments.edit', ['assignment' => $assignment]) }}"><p><img src="{{ asset('images/edit.svg')}}" alt="Bewerken"></p></a></td>
+                    <td class="w-5"><a href="{{ route('assignments.destroy', ['assignment' => $assignment]) }}"><p><img src="{{ asset('images/delete.svg')}}" alt="Verwijderen"></p></a></td>
                     <td class="w-30"><b><p>{{ $assignment->title }}</p></b></td>
                     <td class="w-5"><p>
                     @if ($assignment->authors)
@@ -45,10 +51,6 @@
 
                     <td class="w-5"><p>{{ $assignment->status }}</p></td>
                     <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p>Bekijken</p></a></td>
-                    <td class="w-5"><a href="{{ route('assignments.edit', ['assignment' => $assignment]) }}"><p>Aanpassen</p></a></td>
-                    <td class="w-5"><a href="{{ route('assignments.destroy', ['assignment' => $assignment]) }}"><p>Verwijderen</p></a></td>
-
-
                     <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p><img src="{{ asset('images/forward.svg')}}" alt="Bekijken"></p></a></td>
                 </tr>
             @endforeach
