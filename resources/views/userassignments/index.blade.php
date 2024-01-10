@@ -31,10 +31,10 @@
                 <tr class="">
                     <td class="w-30"><b><p>{{ $userassignment->assignment->title }}</p></b></td>
                     <td class="w-5"><p>
-                    @if ($userassignment->assignment->authors)
-                        <p>{{ $userassignment->assignment->authors->name }}</p>
+                    @if ($userassignment->docent->name)
+                        <p>{{ $userassignment->docent->name }}</p>
                     @else
-                        <p>{{ $userassignment->assignment->created_at }}</p>
+                        <p>Geen gebruiker gevonden.</p>
                     @endif                    
                     </p></td>
 

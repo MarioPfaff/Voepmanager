@@ -18,11 +18,19 @@ class UserAssignmentController extends Controller
     public function index() {
         /* Mario */
         $user = User::find(Auth::user()->id);
-        /* Test om de boolean te checken:
+        /* Test om de boolean te checken van gebruiker:
            dd($user->hasRole('Student')); */
         
         if ($user->hasRole('Student')) {
             $userassignments = UserAssignment::where('student_id', $user->id)->paginate(15);
+        }
+
+        if ($user->hasRole('Docent')) {
+            $userassignments = UserAssignment::where('docent_id', $user->id)->paginate(15);
+        }
+
+        if ($user->hasRole('Beheerder', 'Auteur')) {
+            $userassignments = UserAssignment::paginate(15);
         }
         
         return view('userassignments.index', compact('userassignments'));

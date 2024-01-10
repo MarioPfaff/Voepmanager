@@ -38,11 +38,11 @@ class UserAssignment extends Model
      */
     public function student()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'student_id');
     }
 
     public function docent() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'docent_id');
     }
 
     /**
