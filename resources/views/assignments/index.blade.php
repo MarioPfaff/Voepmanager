@@ -61,6 +61,10 @@
 
                     <td class="w-5"><p>{{ $assignment->status }}</p></td>
                     <td class="w-5"><a href="{{ route('assignments.show', ['assignment' => $assignment]) }}"><p>Bekijken</p></a></td>
+                    <td class="w-5"><a href="{{ route('assignments.edit', ['assignment' => $assignment]) }}"><p>Aanpassen</p></a></td>
+                    <td class="w-5"><a href="{{ route('assignments.destroy', ['assignment' => $assignment]) }}"><p>Verwijderen</p></a></td>
+
+
                 </tr>
             @endforeach
         </tbody>

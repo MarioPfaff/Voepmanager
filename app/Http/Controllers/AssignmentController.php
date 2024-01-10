@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AssignmentController extends Controller
 {
-
-
     public function index()
     {
         $assignments = Assignment::paginate(15);
@@ -25,9 +23,6 @@ class AssignmentController extends Controller
 
     public function store(Request $request)
     {
-
-        //dd($request->all());
-
         $request->validate([
             'title' => 'required',
             'deadline' => 'nullable|date',
@@ -58,7 +53,10 @@ class AssignmentController extends Controller
 
     public function edit(Assignment $assignment)
     {
-        return view('assignments.edit', compact('assignments'));
+        $workprocesses = Workprocess::all();
+        $assignments = Assignment::all(); 
+
+        return view('assignments.edit', compact('workprocesses', 'assignment'));
     }
 
     public function update(Request $request, Assignment $assignment)
@@ -83,5 +81,4 @@ class AssignmentController extends Controller
         return redirect()->route('assignments.index')
             ->with('success', 'Assignment deleted successfully');
     }
-
 }

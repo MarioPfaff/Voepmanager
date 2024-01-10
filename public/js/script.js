@@ -1,3 +1,5 @@
+/* Timer: Meldingen */
+
 document.addEventListener('DOMContentLoaded', function() {
     const successMessage = document.querySelector('.alert-success');
     if (successMessage) {
@@ -6,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 4000); // Verberg de success-melding na 4 seconden (4000 milliseconden)
     }
 });
+
+/* Filter: Werkprocessen */
 
 document.addEventListener('DOMContentLoaded', function() {
     const filterDropdown = document.getElementById('filterDropdown');
@@ -33,3 +37,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Back Button
+    const backBtn = document.getElementById('backBtn');
+
+    if (backBtn) {
+        // Get the current URL
+        const currentURL = window.location.href;
+
+        // Check if the URL contains 'edit'
+        if (currentURL.includes('edit', 'view')) {
+            // If 'edit' is found, go back 2 slashes
+            const lastSlash = currentURL.lastIndexOf('/');
+            const secondLastSlash = currentURL.lastIndexOf('/', lastSlash - 1);
+            const newURL = currentURL.substring(0, secondLastSlash);
+
+            // Update the href attribute
+            backBtn.setAttribute('href', newURL);
+        } else {
+            // If 'edit' is not found, go back 1 slash
+            const lastSlash = currentURL.lastIndexOf('/');
+            const newURL = currentURL.substring(0, lastSlash);
+
+            // Update the href attribute
+            backBtn.setAttribute('href', newURL);
+        }
+    }
+});
