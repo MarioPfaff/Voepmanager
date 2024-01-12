@@ -43,7 +43,6 @@ class AssignmentController extends Controller
         return redirect()->route('assignments.index')
             ->with('success', 'Assignment created successfully.');
     }
-    
 
     public function show(Assignment $assignment)
     {
@@ -65,7 +64,6 @@ class AssignmentController extends Controller
             'title' => 'required|string|max:255',
             'deadline' => 'nullable|date',
             'description' => 'nullable|string',
-
         ]);
 
         $assignment->update($request->all());

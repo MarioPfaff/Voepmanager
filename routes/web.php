@@ -37,6 +37,12 @@ Route::get('/opdrachten/edit/{assignment}', [AssignmentController::class, 'edit'
 Route::put('/opdrachten/update/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
 Route::get('/opdrachten/destroy/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
 
+/* UserAssignment routes */
+Route::get('/userassignments', [UserAssignmentController::class, 'index'])->name('userassignments.index');
+Route::get('/userassignments/view/{id}' , [UserAssignmentController::class, 'view'])->name('userassignments.view');
+Route::get('/userassignments/create', [UserAssignmentController::class, 'create'])->name('userassignments.create');
+Route::post('/userassignments', [UserAssignmentController::class, 'store'])->name('userassignments.store');
+Route::put('/userassignments/update/{userassignment}', [UserAssignmentController::class, 'update'])->name('userassignments.update');
 
 /* Route for login */
 Route::get('/dashboard', function () {
