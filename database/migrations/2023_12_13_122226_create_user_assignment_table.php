@@ -61,7 +61,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('user_assignments');
-        Schema::dropIfExists('user_assignment_comments');
+        Schema::dropIfExists('assignment_comments');
         Schema::dropIfExists('user_assignment_files');
         Schema::dropIfExists('assignment_files');
 

@@ -25,7 +25,7 @@
             <select name="core_task_id">
                 @foreach($core_tasks as $core_task)
                     <option value="{{$core_task->id}}">
-                            {{$core_task->id}}: {{$core_task->name}}
+                            {{$core_task->id}} {{$core_task->name}}
                     </option>
                 @endforeach
             </select>

@@ -25,9 +25,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('core_tasks');
-        Schema::dropIfExists('student_assignments');
-        Schema::dropIfExists('student_assignment_comments');
-        Schema::dropIfExists('student_assignment_files');
+        Schema::dropIfExists('user_assignments');
+        Schema::dropIfExists('assignment_comments');
+        Schema::dropIfExists('user_assignment_files');
         Schema::dropIfExists('assignment_files');
 
     }

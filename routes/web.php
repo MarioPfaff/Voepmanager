@@ -43,7 +43,8 @@ Route::get('/opdrachten/destroy/{assignment}', [AssignmentController::class, 'de
 Route::get('/userassignments', [UserAssignmentController::class, 'index'])->name('userassignments.index');
 Route::get('/userassignments/view/{id}' , [UserAssignmentController::class, 'view'])->name('userassignments.view');
 
-Route::get('/userassignments/create', [UserAssignmentController::class, 'create'])->name('userassignments.create');
+Route::get('/teacherassignments', [UserAssignmentController::class, 'index'])->name('teacherassignments.index');
+Route::get('/userassignments/create/{id}', [UserAssignmentController::class, 'create'])->name('userassignments.create');
 Route::post('/userassignments', [UserAssignmentController::class, 'store'])->name('userassignments.store');
 
 /* Route for login */
