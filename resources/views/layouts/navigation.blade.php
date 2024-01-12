@@ -46,11 +46,11 @@
                     </x-nav-link>
                     @endcan
 
-                    @can('teacherassignments.view')
+                    {{-- @can('teacherassignments.view') --}}
                     <x-nav-link :href="route('teacherassignments.index')" :active="request()->routeIs('teacherassignments.index')">
                         {{ __('Opdrachten') }}
                     </x-nav-link>
-                    @endcan
+                    {{-- @endcan --}}
                     
                     @can('core_tasks.view')
                     <x-nav-link :href="route('core_tasks.index')" :active="request()->routeIs('core_tasks.index')">

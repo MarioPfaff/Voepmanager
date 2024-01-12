@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-back-button/>
-    <h1 class="text-2xl font-bold mb-8">Opdracht toewijzen</h1>
+    <h1 class="text-2xl font-bold">Opdracht toewijzen:</h1><h1 class="text-2xl font-bold mb-8">{{$assignments->title}}</h1>
 
     @if($errors->any())
         <x-notification-danger>
@@ -11,7 +11,7 @@
         </x-notification-danger>
     @endif
 
-    <form method="post" action="{{route('userassignments.store', ['assignment' => $assignments])}}">
+    <form method="post" action="{{route('userassignments.store')}}">
         @csrf
         @method('POST')
 
@@ -21,26 +21,35 @@
             <select name="student_id">
                 @foreach($students as $student)
                     <option value="{{$student->id}}">
-                            {{$student->id}} {{$student->name}}
+                            {{$student->name}}
                     </option>
                 @endforeach
             </select>
         </div>
 
-        {{-- <div>
-            <select name="assignment_id">
-                @foreach($assignments as $assignment)
-                    <option value="{{$assignment->id}}" 
-                        Makes a check on the current user role to select it for this field.
-                             Adds attribute 'selected' if true.
-                        @if ($assignment->id === true) 
-                            selected
-                        @endif
-                        >
-                            {{$assignment->id}} {{$assignment->title}}</option>
+        <div>
+            <x-input-label>Fase</x-input-label>
+        
+            <select id="phase" name="phase">
+                @foreach($possiblePhases as $phase)
+                    <option value="{{ $phase }}">
+                        {{ $phase }}
+                    </option>
                 @endforeach
             </select>
-        </div> --}}
+        </div>
+        
+        <div>
+            <x-input-label>Progressie</x-input-label>
+        
+            <select id="progress" name="progress">
+                @foreach($possibleProgresses as $progress)
+                    <option value="{{ $progress }}">
+                        {{ $progress }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
         <div>
             <x-text-input type="hidden" name="assignment_id" value="{{ $assignments->id }}"></x-text-input>

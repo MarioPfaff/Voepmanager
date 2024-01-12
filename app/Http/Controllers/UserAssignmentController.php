@@ -48,9 +48,11 @@ class UserAssignmentController extends Controller
         //check of de user een docent is
         if ($user->hasRole('Docent')) {
             $userassignments = UserAssignment::All();
+            $possiblePhases = ['Niet ingeleverd', 'Ingeleverd', 'Niet nagekeken', 'Nagekeken'];
+            $possibleProgresses = ['Niet beoordeeld', 'Goedgekeurd', 'Foutgekeurd'];
             $assignments = Assignment::findOrFail($id);
             $students = User::role('Student')->get();
-            return view('teacherassignments.create', compact('userassignments', 'assignments', 'students'));
+            return view('teacherassignments.create', compact('userassignments', 'assignments', 'students', 'possiblePhases', 'possibleProgresses'));
         }
     }
 
@@ -60,13 +62,17 @@ class UserAssignmentController extends Controller
             'student_id' => 'required',
             'docent_id' => 'required',
             'assignment_id' => 'required',
+            'phase' => 'required|string',
+            'progress' => 'required|string',
         ]);
 
         /* Assign the student to the assignment */
         $userassignment = Userassignment::create([
             'student_id' => $request->student_id,
             'docent_id' => $request->docent_id ?? Auth::user()->id,
-            'assignment_id' => $request->assignment_id
+            'assignment_id' => $request->assignment_id,
+            'phase' => $request->phase,
+            'progress' => $request->progress
         ]);
 
         /* Save the created object in variable userassignment */
