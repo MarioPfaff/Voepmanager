@@ -21,6 +21,7 @@ class UserAssignment extends Model
         'progress',
         'assignment_id', 
         'docent_id', 
+        'student_answer',
         'student_id', 
         'created_at', 
         'updated_at'
