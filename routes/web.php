@@ -44,7 +44,7 @@ Route::get('/userassignments', [UserAssignmentController::class, 'index'])->name
 Route::get('/userassignments/view/{id}' , [UserAssignmentController::class, 'view'])->name('userassignments.view');
 Route::get('/userassignments/create', [UserAssignmentController::class, 'create'])->name('userassignments.create');
 Route::post('/userassignments', [UserAssignmentController::class, 'store'])->name('userassignments.store');
-Route::put('/userassignments/update/{userassignment}', [UserAssignmentController::class, 'update'])->name('userassignments.update');
+Route::put('/userassignments/update/{userassignment}', [UserAssignmentController::class, 'update'])->name('userassignment.update');
 
 /* Route for login */
 Route::get('/dashboard', function () {

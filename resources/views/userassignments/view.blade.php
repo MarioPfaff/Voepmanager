@@ -19,17 +19,22 @@
         <p>{{ $userassignment->phase }}</p>
     </div>
 
-    Geef je antwoord:
+    <div>
+        <br/>
+    <label><b>Geef je antwoord</b></label>
 
-    <form method="POST"  action="{{ route('userassignment.store', ['userassignment' => $userassignment]) }}">
+    <form method="POST"  action="{{ route('userassignment.update', ['userassignment' => $userassignment]) }}">
         @csrf
-        @method('POST')
+        @method('PUT')
+
         <div>
-            <x-input-label>Antwoorden</x-input-label>
-            <x-text-input type="textfield" name="student_answer" value="{{$userassignment->student_answer}}"></x-text-input>
+            <input id="description" value="{{ $userassignment->student_answer }}" type="hidden" name="description">
+            <trix-editor class="trix-editor" input="student_answer"></trix-editor>
         </div>
-            <x-primary-button class="my-6" type="submit"> Antwoorden </x-primary-button>
+        <div>
+            <x-primary-button class="my-6" type="submit"> Lever antwoord in </x-primary-button>
         </div>
+    </div>
     </form>
 
 

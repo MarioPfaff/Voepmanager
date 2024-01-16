@@ -47,20 +47,21 @@ class UserAssignmentController extends Controller
     }
 
 
-    public function store(Request $request) {
-        $validatedData = $request->validate([
-            'student_answer' => 'required|string|max:255',
-        ]);
-    
+    public function update(Request $request, UserAssignment $userassignment) {
         $user = User::find(Auth::user()->id);
-    
-        if (!$user->hasRole('Beheerder', 'Auteur')) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
-    
-        $userAssignment = new UserAssignment($validatedData);
-    
-        $user->userAssignments()->save($userAssignment);
+
+        $request->validate([
+            'student_answer' => 'string',
+        ]);
+
+        $request->merge([
+            'student_id' => $user->id,
+            'phase' => 'Ingeleverd, niet nagekeken',
+            'progress' => 'Niet beoordeeld',
+        ]);
+
+            
+        $userassignment->update($request->all());
     
         return redirect()->route('userassignments.index');
     }
