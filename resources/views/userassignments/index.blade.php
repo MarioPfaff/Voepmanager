@@ -46,7 +46,6 @@
             <th class="w-24">Opdracht</th>
             <th class="w-5">Opengezet door</th>
             <th class="w-5">Fase</th>
-            <th class="w-5">Progressie</th>
             <th class="w-2"></th>
         </tr>
 
@@ -68,8 +67,6 @@
                     </p></td>
 
                     <td class="w-5"><p>{{ $userassignment->phase }}</p></td>
-                    <td class="w-5"><p>{{ $userassignment->progress }}</p></td>
-                    <td class="w-5"><a href="{{ route('userassignments.view', ['id' => $userassignment]) }}"><p>Bekijken</p></a></td>
                     <td class="w-5 
                     {{-- Veranderd de classes gebaseerd op de waarde van userassignment->progress --}}
                     {{ $userassignment->progress == 'Niet beoordeeld' ? 'nietBeoordeeld_text' : '' }}

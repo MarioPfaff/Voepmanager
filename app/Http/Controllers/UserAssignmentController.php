@@ -75,7 +75,7 @@ class UserAssignmentController extends Controller
         if ($user->hasRole('Docent')) {
             $userassignments = UserAssignment::All();
             $possiblePhases = ['Niet ingeleverd', 'Ingeleverd, niet nagekeken', 'Nagekeken'];
-            $possibleProgresses = ['Niet beoordeeld', 'Goedgekeurd', 'Foutgekeurd'];
+            $possibleProgresses = ['Niet beoordeeld', 'Goedgekeurd', 'Afgekeurd'];
             $assignments = Assignment::findOrFail($id);
             $students = User::role('Student')->get();
             return view('teacherassignments.create', compact('userassignments', 'assignments', 'students', 'possiblePhases', 'possibleProgresses'));
@@ -137,7 +137,7 @@ class UserAssignmentController extends Controller
     Ook maak ik de variabel $progresses met de waarde die in de dropdown zitten op de edit pagina */
     public function edit($id) {
         $teacherassignment = UserAssignment::findOrFail($id);
-        $progresses = ['Goedgekeurd', 'Foutgekeurd'];
+        $progresses = ['Goedgekeurd', 'Afgekeurd'];
         return view('teacherassignments.edit', compact('teacherassignment', 'progresses'));
     }
 
