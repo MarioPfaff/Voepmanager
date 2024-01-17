@@ -107,6 +107,8 @@ class UserAssignmentController extends Controller
         }
     }
 
+    /* edit functie waar ik de userassignment vind.
+    Ook maak ik de variabel $progresses met de waarde die in de dropdown zitten op de edit pagina */
     public function edit($id) {
         $teacherassignment = UserAssignment::findOrFail($id);
         $progresses = ['Goedgekeurd', 'Foutgekeurd'];
@@ -131,27 +133,27 @@ class UserAssignmentController extends Controller
     
                 
             $userassignment->update($data->all());
-            // dd($data->all());
         
             return redirect()->route('userassignments.index');
         }
 
-        /* ik de de update gesplitst gebaseerd op rollen. 
+        /* ik heb de update gesplitst gebaseerd op rollen. 
         De student functie is voor een opdracht inlevern. Die van docent is voor beoordelen */
         if ($user->hasRole('Docent')) {
             /* Deze request velden zijn degene die de docent moet invullen */
             $request->validate([
                 'progress' => 'string',
             ]);
-    
+            
+            /* de waarde die naar de database worden geschreven.
+            phase is automatisch ingevuld als Nagekeken. 
+            progress is een dropdown met 1 van de 2 waardes die ik heb gedefineerd in de edit functie */
             $data = $request->merge([
                 'phase' => 'Nagekeken',
                 'progress' => $request->progress,
             ]);
     
-                
             $userassignment->update($data->all());
-            // dd($data->all());
         
             return redirect()->route('teacherassignments.view')->with('success', 'Opdracht beoordeeld!');
         }
