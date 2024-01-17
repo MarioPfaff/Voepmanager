@@ -1,18 +1,11 @@
 /* table */
-tbody tr:nth-of-type(even) {
-    background-color: #f1f1f1;
-}
 
 table tr td, table tr th {
     padding: 5px 12px;
 }
 
-table tr td:nth-of-type(4n+1) {
-    border-radius: 5px 0px 0px 5px;
-}
-
-table tr td:nth-of-type(1n+5) {
-    border-radius: 0px 5px 5px 0px;
+tbody {
+    margin: 25px;
 }
 
 
@@ -91,4 +84,30 @@ input[type="select"] {
     border-left-width: 0.3em;
     margin-left: 0.3em;
     padding-left: 0.6em;
+}
+
+/* Labels voor progressie */
+
+.nietBeoordeeld {
+    background-color: rgb(244, 244, 244) !important;
+}
+
+.goedgekeurd  {
+    background-color: rgb(233, 249, 233) !important;
+}
+
+.afgekeurd  {
+    background-color: rgb(250, 212, 212) !important;
+}
+
+.nietBeoordeeld_text {
+    color: grey;
+}
+
+.goedgekeurd_text  {
+    color: green;
+}
+
+.afgekeurd_text  {
+    color: red;
 }

@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Models\Assignment;
+use App\Models\Workprocess;
 
 
 class UserAssignmentController extends Controller 
@@ -25,8 +26,33 @@ class UserAssignmentController extends Controller
            dd($user->hasRole('Student')); */
 
         if ($user->hasRole('Student')) {
-            $userassignments = UserAssignment::where('student_id', $user->id)->paginate(15);
-            return view('userassignments.index', compact('userassignments'));
+            $userassignments = UserAssignment::where('student_id', $user->id)->
+            orderByRaw("phase = 'Niet ingeleverd' DESC")->
+            orderByRaw("phase = 'Ingeleverd, niet nagekeken' DESC")->
+            orderByRaw("progress = 'Niet beoordeeld' DESC")->
+            orderByRaw("progress = 'Afgekeurd' DESC")->
+            orderByRaw("progress = 'Goedgekeurd' DESC")->
+            latest('updated_at')
+            ->paginate(15);
+
+            /* Hier definieeren we de variabelen van assignments met verschillende queries. */
+            $assignmentsApproved = UserAssignment::where('student_id', $user->id)->where('progress', 'Goedgekeurd')->count();
+            $assignmentsNotDelivered = UserAssignment::where('student_id', $user->id)->where('phase', 'Niet ingeleverd')->count();
+            $assignmentsAssigned = UserAssignment::where('student_id', $user->id)->count();
+            $assignmentsAll = Assignment::query()->count() - $assignmentsAssigned;
+
+            /* Hier begint de functie om werkprocessen te checken */
+            $workprocesses = Workprocess::all();
+            $assignments = Assignment::all();
+            
+            return view('userassignments.index', 
+            compact('userassignments', 
+            'assignmentsApproved',
+            'assignmentsNotDelivered',
+            'assignmentsAssigned',
+            'assignmentsAll',
+            'workprocesses',
+            'assignments'));
         }
 
         if ($user->hasRole('Docent')) {
@@ -38,7 +64,7 @@ class UserAssignmentController extends Controller
         if ($user->hasRole('Beheerder', 'Auteur')) {
             $userassignments = UserAssignment::paginate(15);
         }
-        
+
     }
 
     public function create($id) {
