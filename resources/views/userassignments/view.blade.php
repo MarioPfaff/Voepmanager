@@ -28,8 +28,8 @@
         @method('PUT')
 
         <div>
-            <input id="description" value="{{ $userassignment->student_answer }}" type="hidden" name="description">
-            <trix-editor class="trix-editor" input="student_answer"></trix-editor>
+            <input id="student_answer" value="{{ $userassignment->student_answer }}" type="hidden" name="student_answer">
+            <trix-editor class="trix-editor" input="student_answer" name="student_answer"></trix-editor>
         </div>
         <div>
             <x-primary-button class="my-6" type="submit"> Lever antwoord in </x-primary-button>
