@@ -15,8 +15,6 @@ use Spatie\Permission\Traits\HasRoles;
 
 class UserAssignment extends Model
 {
-    protected $table = 'student_assignments';
-
     // split the column user_id to docent_id and student_id
     protected $fillable = [
         'phase', 

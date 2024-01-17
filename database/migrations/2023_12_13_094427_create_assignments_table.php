@@ -34,7 +34,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('assignments');
         Schema::dropIfExists('user_assignment');
-        Schema::dropIfExists('user_assignment_comments');
+        Schema::dropIfExists('assignment_comments');
         Schema::dropIfExists('user_assignment_files');
         Schema::dropIfExists('assignment_files');
     }

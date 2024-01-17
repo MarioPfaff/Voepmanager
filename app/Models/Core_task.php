@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Workprocess;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Core_task extends Model
@@ -28,6 +29,6 @@ class Core_task extends Model
      */
     public function workprocesses()
     {
-        return $this->hasMany('App\Models\Workprocess');
+        return $this->hasMany(Workprocess::class);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\UserAssignment; // Import the UserAssignment model
 use Illuminate\Support\Facades\Auth; // Import the Auth facade
 use Spatie\Permission\Traits\HasRoles; // Import the HasRoles trait
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
@@ -28,10 +29,11 @@ class UserAssignmentController extends Controller
             return view('userassignments.index', compact('userassignments'));
         }
 
-        // if ($user->hasRole('Docent')) {
-        //     $userassignments = UserAssignment::where('docent_id', $user->id)->paginate(15);
-        //     return view('userassignments.create', compact('userassignments'));
-        // }
+        if ($user->hasRole('Docent')) {
+            $teacherassignments = UserAssignment::All();
+            $assignments = Assignment::paginate(15);
+            return view('teacherassignments.index', compact('teacherassignments', 'assignments'));
+        }
 
         if ($user->hasRole('Beheerder', 'Auteur')) {
             $userassignments = UserAssignment::paginate(15);
@@ -39,18 +41,19 @@ class UserAssignmentController extends Controller
         
     }
 
-    public function create() {
+    public function create($id) {
         // vindt de huidige user
         $user = User::find(Auth::user()->id);
-        $students = User::role('Student')->get();
-        dd($students);
 
         //check of de user een docent is
         if ($user->hasRole('Docent')) {
             $userassignments = UserAssignment::All();
-            return view('userassignments.create', compact('userassignments'));
+            $possiblePhases = ['Niet ingeleverd', 'Ingeleverd', 'Niet nagekeken', 'Nagekeken'];
+            $possibleProgresses = ['Niet beoordeeld', 'Goedgekeurd', 'Foutgekeurd'];
+            $assignments = Assignment::findOrFail($id);
+            $students = User::role('Student')->get();
+            return view('teacherassignments.create', compact('userassignments', 'assignments', 'students', 'possiblePhases', 'possibleProgresses'));
         }
-        
     }
 
     public function store(Request $request) {
@@ -59,22 +62,24 @@ class UserAssignmentController extends Controller
             'student_id' => 'required',
             'docent_id' => 'required',
             'assignment_id' => 'required',
-            // 'phase' => 'required|string|max:11',
+            'phase' => 'required|string',
+            'progress' => 'required|string',
         ]);
 
         /* Assign the student to the assignment */
         $userassignment = Userassignment::create([
             'student_id' => $request->student_id,
             'docent_id' => $request->docent_id ?? Auth::user()->id,
-            'assignment_id' => $request->student_id,
-            // 'crebo' => $data['crebo'],
+            'assignment_id' => $request->assignment_id,
+            'phase' => $request->phase,
+            'progress' => $request->progress
         ]);
 
         /* Save the created object in variable userassignment */
         $userassignment->save();
 
         /* Redirect to the assignment overview page */
-        return to_route('assignment.index')->with('success', 'Opdracht toegewezen!');
+        return to_route('teacherassignments.index')->with('success', 'Opdracht toegewezen!');
     }
 
     public function view($id) {

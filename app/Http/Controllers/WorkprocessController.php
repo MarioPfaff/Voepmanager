@@ -39,7 +39,7 @@ class WorkprocessController extends Controller
         $workprocess->update($data);
 
         /* Redirect to the workprocess index */
-        return redirect()->route('workprocesses.index')->with('success', 'Werkprocess succesvol bewerkt!')->with('success_timeout', true);
+        return redirect()->route('workprocesses.index')->with('success', 'Werkprocess succesvol bewerkt!');
     }
     /* end edit functions */
 
