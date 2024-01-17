@@ -28,6 +28,7 @@
         @method('PUT')
 
         <div>
+            {{-- Een trix component werkt samen met de input om dynamisch de waarde in te geven. Daarom zijn er twee velden. --}}
             <input id="student_answer" value="{{ $userassignment->student_answer }}" type="hidden" name="student_answer">
             <trix-editor class="trix-editor" input="student_answer" name="student_answer"></trix-editor>
         </div>

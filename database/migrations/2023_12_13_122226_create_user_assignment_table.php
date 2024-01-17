@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(Assignment::class);
             $table->text('student_answer')->nullable();
             $table->enum('phase', ['Niet ingeleverd', 'Ingeleverd, niet nagekeken', 'Nagekeken'])->default('Niet ingeleverd');
-            $table->enum('progress', ['Goedgekeurd', 'Foutgekeurd', 'Niet beoordeeld'])->default('Niet beoordeeld');
+            $table->enum('progress', ['Goedgekeurd', 'Afgekeurd', 'Niet beoordeeld'])->default('Niet beoordeeld');
             $table->timestamps();
         });
 
