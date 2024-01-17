@@ -33,7 +33,8 @@
         <br/>
         <b>Je kan examineren op de volgende werkprocessen:</b>
         {{-- Hiervoor moet een join gemaakt worden zodat we kunnen checken welke werkprocessen precies voltooid zijn.
-            Dit is dus een work in progress onderdeel, specifiek de foreach. --}}
+            Dit is dus een work in progress onderdeel, specifiek de foreach.
+            Er zijn andere mogelijkheden, zoals een koppeling opbouwen bij  --}}
         @foreach($workprocesses as $workprocess) 
             <br/>
             <b>   - {{ $workprocess->workprocess_title }}: </b>{{ $workprocess->assignments->where('phase', ' ')->count() }} / {{ $workprocess->assignments->count() }} opdrachten goedgekeurd.
@@ -60,6 +61,7 @@
                 ">
                     <td class="w-30"><b><p>{{ $userassignment->assignment->title }}</p></b></td>
                     <td class="w-5"><p>
+                    
                     @if ($userassignment->docent->name)
                         <p>{{ $userassignment->docent->name }}</p>
                     @else
