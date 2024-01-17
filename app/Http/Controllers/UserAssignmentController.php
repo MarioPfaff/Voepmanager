@@ -98,14 +98,16 @@ class UserAssignmentController extends Controller
             'student_answer' => 'string',
         ]);
 
-        $request->merge([
+        $data = $request->merge([
             'student_id' => $user->id,
             'phase' => 'Ingeleverd, niet nagekeken',
             'progress' => 'Niet beoordeeld',
+            'student_answer' => $request->student_answer,
         ]);
 
             
-        $userassignment->update($request->all());
+        $userassignment->update($data->all());
+        // dd($data->all());
     
         return redirect()->route('userassignments.index');
     }
