@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('docent_id')->constrained('users');
             $table->foreignId('student_id')->constrained('users');
             $table->foreignIdFor(Assignment::class);
+            $table->text('student_answer')->nullable();
             $table->enum('phase', ['Niet ingeleverd', 'Ingeleverd, niet nagekeken', 'Nagekeken'])->default('Niet ingeleverd');
             $table->enum('progress', ['Goedgekeurd', 'Foutgekeurd', 'Niet beoordeeld'])->default('Niet beoordeeld');
             $table->timestamps();

@@ -12,6 +12,7 @@ use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Models\Assignment;
 
+
 class UserAssignmentController extends Controller 
 {    
     use HasFactory, Notifiable, HasRoles;
@@ -19,10 +20,9 @@ class UserAssignmentController extends Controller
     public function index() {
         /* Mario */
         $user = User::find(Auth::user()->id);
-        /* Test om de boolean te checken van gebruiker: */
-        //    dd($user->name);
-        //    dd($user->hasRole('Student'));
-        
+        /* Test om de boolean te checken van gebruiker:
+           dd($user->hasRole('Student')); */
+
         if ($user->hasRole('Student')) {
             $userassignments = UserAssignment::where('student_id', $user->id)->paginate(15);
             return view('userassignments.index', compact('userassignments'));
@@ -80,13 +80,29 @@ class UserAssignmentController extends Controller
     public function view($id) {
         $userassignment = UserAssignment::find($id);
     
-        if (!$userassignment) {
-            abort(404);
-        }
-    
         $assignment = $userassignment->assignment;
     
         return view('userassignments.view', compact('userassignment', 'assignment'));
+    }
+
+
+    public function update(Request $request, UserAssignment $userassignment) {
+        $user = User::find(Auth::user()->id);
+
+        $request->validate([
+            'student_answer' => 'string',
+        ]);
+
+        $request->merge([
+            'student_id' => $user->id,
+            'phase' => 'Ingeleverd, niet nagekeken',
+            'progress' => 'Niet beoordeeld',
+        ]);
+
+            
+        $userassignment->update($request->all());
+    
+        return redirect()->route('userassignments.index');
     }
     
 }

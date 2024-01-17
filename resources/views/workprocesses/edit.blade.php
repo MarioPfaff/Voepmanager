@@ -43,7 +43,6 @@
             <x-input-label>Titel</x-input-label>
             <x-text-input type="text" name="workprocess_title" value="{{$workprocess->workprocess_title}}"></x-text-input>
         </div>
-
             <x-primary-button class="my-6" type="submit"> Toepassen </x-primary-button>
         </div>
     </form>
