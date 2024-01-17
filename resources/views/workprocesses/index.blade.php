@@ -22,7 +22,7 @@
         <a href="{{ route('workprocesses.create') }}">Werkproces creëren</a>
     </x-primary-button>
 
-    <select id="filterDropdown" name="core_task_id">
+    <select id="filterWorkprocesses" name="core_task_id">
         <option value=""> Alle </option>
         @foreach($core_tasks as $core_task)
             <option value="{{$core_task->name}}">

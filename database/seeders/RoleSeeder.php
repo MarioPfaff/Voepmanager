@@ -242,30 +242,6 @@ class RoleSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        // DB::table('permissions')->insert([
-        //     'id' => '18',
-        //     'name' => 'core_tasks.create',
-        //     'guard_name' => 'web',
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
-
-        // DB::table('permissions')->insert([
-        //     'id' => '19',
-        //     'name' => 'core_tasks.edit',
-        //     'guard_name' => 'web',
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
-
-        // DB::table('permissions')->insert([
-        //     'id' => '20',
-        //     'name' => 'core_tasks.delete',
-        //     'guard_name' => 'web',
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
-
         /* Toestemmingen: user assignments */
 
         DB::table('permissions')->insert([
@@ -275,30 +251,6 @@ class RoleSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-
-        // DB::table('permissions')->insert([
-        //     'id' => '18',
-        //     'name' => 'core_tasks.create',
-        //     'guard_name' => 'web',
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
-
-        // DB::table('permissions')->insert([
-        //     'id' => '19',
-        //     'name' => 'core_tasks.edit',
-        //     'guard_name' => 'web',
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
-
-        // DB::table('permissions')->insert([
-        //     'id' => '20',
-        //     'name' => 'core_tasks.delete',
-        //     'guard_name' => 'web',
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
  
  
         // Get the Beheerder role

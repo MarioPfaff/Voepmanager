@@ -40,17 +40,21 @@
                     </x-nav-link>
                     @endcan
 
-                    @can('userassignment.view')
+                    {{-- @can('userassignment.view') --}}
                     <x-nav-link :href="route('userassignments.index')" :active="request()->routeIs('userassignments.index')">
                         {{ __('Opdrachten') }}
                     </x-nav-link>
-                    @endcan
+                    {{-- @endcan --}}
 
                     {{-- @can('teacherassignments.view') --}}
                     <x-nav-link :href="route('teacherassignments.index')" :active="request()->routeIs('teacherassignments.index')">
                         {{ __('Opdrachten') }}
                     </x-nav-link>
                     {{-- @endcan --}}
+
+                    <x-nav-link :href="route('teacherassignments.view')" :active="request()->routeIs('teacherassignments.view')">
+                        {{ __('Open opdrachten') }}
+                    </x-nav-link>
                     
                     @can('core_tasks.view')
                     <x-nav-link :href="route('core_tasks.index')" :active="request()->routeIs('core_tasks.index')">

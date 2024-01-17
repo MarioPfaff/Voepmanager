@@ -48,7 +48,7 @@ class UserAssignmentController extends Controller
         //check of de user een docent is
         if ($user->hasRole('Docent')) {
             $userassignments = UserAssignment::All();
-            $possiblePhases = ['Niet ingeleverd', 'Ingeleverd', 'Niet nagekeken', 'Nagekeken'];
+            $possiblePhases = ['Niet ingeleverd', 'Ingeleverd, niet nagekeken', 'Nagekeken'];
             $possibleProgresses = ['Niet beoordeeld', 'Goedgekeurd', 'Foutgekeurd'];
             $assignments = Assignment::findOrFail($id);
             $students = User::role('Student')->get();
@@ -82,34 +82,78 @@ class UserAssignmentController extends Controller
         return to_route('teacherassignments.index')->with('success', 'Opdracht toegewezen!');
     }
 
-    public function view($id) {
-        $userassignment = UserAssignment::find($id);
-    
-        $assignment = $userassignment->assignment;
-    
-        return view('userassignments.view', compact('userassignment', 'assignment'));
-    }
+    /* ik heb de variabel $id null gemaakt, zodat de if statement van docent werkt zonder de variabel */
+    public function view($id = null) {
 
-
-    public function update(Request $request, UserAssignment $userassignment) {
         $user = User::find(Auth::user()->id);
 
-        $request->validate([
-            'student_answer' => 'string',
-        ]);
+        if ($user->hasRole('Student')) {
+            /* hier check ik of die een userassignment id kan vinden, 
+            anders pakt die de eerste userassignment van de student */
+            $userassignment = $id ? UserAssignment::find($id) : $user->userAssignments->first();
+        
+            $assignment = $userassignment->assignment;
+        
+            return view('userassignments.view', compact('userassignment', 'assignment'));
+        }
 
-        $data = $request->merge([
-            'student_id' => $user->id,
-            'phase' => 'Ingeleverd, niet nagekeken',
-            'progress' => 'Niet beoordeeld',
-            'student_answer' => $request->student_answer,
-        ]);
-
-            
-        $userassignment->update($data->all());
-        // dd($data->all());
-    
-        return redirect()->route('userassignments.index');
+        /* ik heb de view gesplitst in rollen. Zo kun je 2 verschillende views maken met 1 functie */
+        if ($user->hasRole('Docent')) {
+            /* ik pak alle rijen in de userassignment tabel en ik filter op de docent_id van de ingelogde user */
+            $teacherassignments = UserAssignment::where('docent_id', $user->id)->paginate(15);
+            /* hier maak ik de waardes voor de phase filter in de view pagina */
+            $phases = ['Niet ingeleverd', 'Ingeleverd, niet nagekeken', 'Nagekeken'];
+            return view('teacherassignments.view', compact('teacherassignments', 'phases'));
+        }
     }
+
+    public function edit($id) {
+        $teacherassignment = UserAssignment::findOrFail($id);
+        $progresses = ['Goedgekeurd', 'Foutgekeurd'];
+        return view('teacherassignments.edit', compact('teacherassignment', 'progresses'));
+    }
+
+    public function update(Request $request, UserAssignment $userassignment) {
+
+        $user = User::find(Auth::user()->id);
+
+        if ($user->hasRole('Student')) {
+            $request->validate([
+                'student_answer' => 'string',
+            ]);
     
+            $data = $request->merge([
+                'student_id' => $user->id,
+                'phase' => 'Ingeleverd, niet nagekeken',
+                'progress' => 'Niet beoordeeld',
+                'student_answer' => $request->student_answer,
+            ]);
+    
+                
+            $userassignment->update($data->all());
+            // dd($data->all());
+        
+            return redirect()->route('userassignments.index');
+        }
+
+        /* ik de de update gesplitst gebaseerd op rollen. 
+        De student functie is voor een opdracht inlevern. Die van docent is voor beoordelen */
+        if ($user->hasRole('Docent')) {
+            /* Deze request velden zijn degene die de docent moet invullen */
+            $request->validate([
+                'progress' => 'string',
+            ]);
+    
+            $data = $request->merge([
+                'phase' => 'Nagekeken',
+                'progress' => $request->progress,
+            ]);
+    
+                
+            $userassignment->update($data->all());
+            // dd($data->all());
+        
+            return redirect()->route('teacherassignments.view')->with('success', 'Opdracht beoordeeld!');
+        }
+    }
 }

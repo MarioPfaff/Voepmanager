@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Filter: Werkprocessen */
 
 document.addEventListener('DOMContentLoaded', function() {
-    const filterDropdown = document.getElementById('filterDropdown');
+    const filterDropdown = document.getElementById('filterWorkprocesses');
     const workprocessTable = document.getElementById('workprocessTable');
 
     filterDropdown.addEventListener('input', function() {
@@ -24,7 +24,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Check if there are at least two cells (kerntaak and others)
             if (cells.length >= 2) {
-                const cell = cells[1]; // Index of the second cell (kerntaak)
+                const cell = cells[3]; // Index of the second cell (kerntaak)
+
+                if (selectedValue === '' || cell.textContent === selectedValue) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        }
+    });
+});
+
+/* Filter: Ingelverde opdrachten */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const filterDropdown = document.getElementById('filterPhase');
+    const userassignmentTable = document.getElementById('userassignmentTable');
+
+    filterDropdown.addEventListener('input', function() {
+        const selectedValue = filterDropdown.value;
+        const rows = userassignmentTable.getElementsByTagName('tr');
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const cells = row.getElementsByTagName('td');
+
+            // Check if there are at least two cells (kerntaak and others)
+            if (cells.length >= 2) {
+                const cell = cells[2]; // Index of the second cell (kerntaak)
 
                 if (selectedValue === '' || cell.textContent === selectedValue) {
                     row.style.display = '';
